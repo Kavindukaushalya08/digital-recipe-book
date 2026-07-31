@@ -17,6 +17,125 @@
     
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
+
+    
+    <style>
+        :root {
+            --primary-green: #257838;
+            --primary-green-hover: #1e622d;
+            --primary-orange: #ee5d20;
+            --primary-orange-hover: #d84c12;
+            --text-dark: #1e252b;
+            --text-muted: #5a6578;
+            --bg-hero: linear-gradient(135deg, #fff8eb 0%, #fef0d2 50%, #fde7b7 100%);
+            --bg-light: #f8faf9;
+            --card-bg: #ffffff;
+            --star-gold: #ffb800;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-pill: 9999px;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background-color: var(--card-bg); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        button { cursor: pointer; border: none; outline: none; font-family: inherit; transition: var(--transition); }
+
+        .text-green { color: var(--primary-green); }
+        .text-orange { color: var(--primary-orange); }
+        .text-green-bold { color: var(--primary-green); font-weight: 800; }
+        .text-orange-bold { color: var(--primary-orange); font-weight: 800; }
+
+        .navbar { position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.05); padding: 14px 0; }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; }
+        .brand-logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon svg { width: 38px; height: 38px; }
+        .logo-text { display: flex; flex-direction: column; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; line-height: 1.1; }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-link { font-weight: 600; font-size: 0.95rem; color: var(--text-muted); position: relative; padding: 6px 0; }
+        .nav-link:hover { color: var(--primary-orange); }
+        .nav-link.active { color: var(--primary-orange); font-weight: 700; }
+        .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background-color: var(--primary-orange); border-radius: var(--radius-pill); }
+        .nav-actions { display: flex; align-items: center; gap: 16px; }
+        .search-trigger-btn { background: none; font-size: 1.2rem; color: var(--text-dark); padding: 8px; border-radius: 50%; }
+        .login-outline-btn { display: inline-flex; align-items: center; gap: 8px; background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); font-weight: 700; padding: 8px 20px; border-radius: var(--radius-pill); transition: var(--transition); }
+        .login-outline-btn:hover { background-color: var(--primary-green); color: white; }
+
+        .login-page-body { background-color: #d1d5db; min-height: 100vh; display: flex; flex-direction: column; }
+        .login-main-section { flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 50px 24px; }
+        .login-container-wrapper { max-width: 1040px; width: 100%; }
+        .login-card-grid { display: grid; grid-template-columns: 1fr 1.05fr; background-color: #ffffff; border-radius: 28px; overflow: hidden; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15); }
+        .login-form-card { background-color: #f8fafc; padding: 44px; display: flex; flex-direction: column; justify-content: center; }
+        .login-illustration { text-align: center; margin-bottom: 12px; }
+        .illu-svg { width: 120px; height: 90px; }
+        .login-header-text { text-align: center; margin-bottom: 28px; }
+        .login-header-text h2 { font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--text-dark); }
+        .login-header-text p { color: var(--text-muted); font-size: 0.92rem; }
+        .auth-form { display: flex; flex-direction: column; gap: 18px; }
+        .input-field-group { display: flex; flex-direction: column; gap: 6px; }
+        .input-field-group label { font-weight: 700; font-size: 0.85rem; color: var(--text-dark); }
+        .input-icon-wrapper { position: relative; display: flex; align-items: center; }
+        .input-icon { position: absolute; left: 16px; color: #94a3b8; font-size: 0.95rem; }
+        .input-icon-wrapper input { width: 100%; padding: 12px 16px 12px 44px; border-radius: 12px; border: 1px solid #e2e8f0; background: #ffffff; font-family: inherit; font-size: 0.92rem; transition: var(--transition); }
+        .input-icon-wrapper input:focus { border-color: #00a843; outline: none; box-shadow: 0 0 0 3px rgba(0, 168, 67, 0.15); }
+        .password-toggle-icon { position: absolute; right: 16px; color: #94a3b8; cursor: pointer; }
+        .form-options-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem; margin-top: 4px; }
+        .checkbox-container { display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; color: var(--text-dark); }
+        .checkbox-container input { accent-color: #00a843; width: 16px; height: 16px; }
+        .forgot-pass-link { font-weight: 700; color: #00a843; }
+        .btn-green-submit { background-color: #00a843; color: white; font-weight: 700; font-size: 1rem; padding: 14px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0, 168, 67, 0.3); justify-content: center; width: 100%; margin-top: 6px; }
+        .btn-green-submit:hover { background-color: #008f39; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 168, 67, 0.4); }
+        .auth-divider { position: relative; text-align: center; margin: 16px 0; }
+        .auth-divider::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: #cbd5e1; }
+        .auth-divider span { position: relative; background-color: #f8fafc; padding: 0 14px; font-size: 0.8rem; color: #94a3b8; font-weight: 600; }
+        .social-login-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 10px; font-weight: 700; font-size: 0.88rem; color: var(--text-dark); }
+        .signup-prompt { text-align: center; font-size: 0.88rem; color: var(--text-muted); margin-top: 10px; }
+        .create-acc-link { color: #00a843; font-weight: 700; margin-left: 4px; }
+
+        .login-hero-card { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 60px 48px; background-color: #0d131a; color: white; }
+        .hero-card-bg-image { position: absolute; top: 0; right: 0; width: 75%; height: 100%; background-size: cover; background-position: center; opacity: 0.85; }
+        .hero-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, #0d131a 35%, rgba(13, 19, 26, 0.7) 70%, transparent 100%); }
+        .chalk-decor { position: absolute; opacity: 0.7; pointer-events: none; }
+        .chalk-chef-hat { top: 12%; left: 8%; }
+        .chalk-heart { top: 28%; left: 48%; }
+        .chalk-whisk { bottom: 15%; left: 45%; }
+        .hero-card-text { position: relative; z-index: 2; max-width: 360px; }
+        .hero-slogan { font-family: var(--font-heading); font-size: 3.6rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .slogan-orange { color: #ee5d20; }
+        .slogan-green { color: #00a843; }
+        .hero-description { font-size: 1.05rem; line-height: 1.5; color: #e2e8f0; opacity: 0.95; font-weight: 500; }
+
+        .footer-light { background-color: #f1f5f9; border-top: 1px solid #e2e8f0; padding: 16px 0; }
+        .footer-light-container { display: flex; align-items: center; justify-content: space-between; }
+        .footer-brand-copy { display: flex; align-items: center; gap: 20px; }
+        .footer-logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 800; font-size: 1.1rem; }
+        .footer-copy-text { font-size: 0.88rem; color: var(--text-muted); font-weight: 600; }
+        .social-circles-row { display: flex; align-items: center; gap: 14px; }
+        .social-circle { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; transition: var(--transition); }
+        .facebook-bg { background-color: #1877f2; }
+        .instagram-bg { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+        .youtube-bg { background-color: #ff0000; }
+        .pinterest-bg { background-color: #bd081c; }
+
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--text-dark); color: white; padding: 14px 24px; border-radius: var(--radius-md); font-weight: 600; opacity: 0; transform: translateY(20px); transition: var(--transition); z-index: 3000; }
+        .toast.show { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 992px) {
+            .login-card-grid { grid-template-columns: 1fr; }
+            .login-hero-card { display: none; }
+            .footer-light-container { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
 </head>
 <body class="login-page-body">
 
@@ -67,15 +186,12 @@
                 <div class="login-form-card">
                     <div class="login-illustration">
                         <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-svg">
-                            
                             <path d="M40 85 C40 65, 120 65, 120 85 Z" fill="#2E7D32"/>
                             <rect x="35" y="85" width="90" height="20" rx="8" fill="#1b5e20"/>
-                            
                             <rect x="55" y="25" width="50" height="40" rx="4" fill="#ffecb3" stroke="#ffb300" stroke-width="2"/>
                             <line x1="65" y1="35" x2="95" y2="35" stroke="#e65100" stroke-width="2.5" stroke-linecap="round"/>
                             <line x1="65" y1="45" x2="90" y2="45" stroke="#795548" stroke-width="2" stroke-linecap="round"/>
                             <line x1="65" y1="53" x2="85" y2="53" stroke="#795548" stroke-width="2" stroke-linecap="round"/>
-                            
                             <circle cx="35" cy="65" r="10" fill="#e53935"/>
                             <path d="M35 53 Q38 58 35 60 Q32 58 35 53 Z" fill="#43a047"/>
                             <circle cx="125" cy="60" r="8" fill="#e53935"/>
