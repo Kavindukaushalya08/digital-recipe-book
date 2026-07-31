@@ -3,142 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Digital Recipe Book</title>
+    <title>Digital Recipe Book - Discover, Cook & Share Delicious Recipes</title>
+    <meta name="description" content="Explore a wide collection of recipes from around the world. Discover, cook and share your favorite delicious recipes with Digital Recipe Book.">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-hat-chef text-primary fs-3"></i> 
-                Digital <br>Recipe Book
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5C14.4772 5 10 9.47715 10 15C10 17.5 10.9 19.8 12.4 21.5C9.5 22.8 7.5 25.6 7.5 29H32.5C32.5 25.6 30.5 22.8 27.6 21.5C29.1 19.8 30 17.5 30 15C30 9.47715 25.5228 5 20 5Z" fill="#2E7D32"/>
+                        <path d="M8 29H32V32C32 33.6569 30.6569 35 29 35H11C9.34315 35 8 33.6569 8 32V29Z" fill="#EE5D20"/>
+                        <path d="M14 15C14 11.6863 16.6863 9 20 9C23.3137 9 26 11.6863 26 15" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="20" cy="20" r="2" fill="white"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="text-green">Digital</span>
+                    <span class="text-orange">Recipe Book</span>
+                </div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Recipes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                </ul>
-            </div>
-            <div class="d-none d-lg-flex align-items-center gap-3">
-                <a href="#" class="text-dark fs-5"><i class="fas fa-search"></i></a>
-                <a href="#" class="btn btn-primary-custom"><i class="fas fa-user me-2"></i>Login</a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#recipes" class="nav-link">Recipes</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="search-trigger-btn" id="searchTriggerBtn" aria-label="Open Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="login-btn" id="loginBtn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Login</span>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
         </div>
-    </nav>
+    </header>
 
     
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
+    <main>
+        
+        <section class="hero-section" id="home">
+            <div class="hero-bg-decorations">
+                <div class="decor-leaf decor-1">🍃</div>
+                <div class="decor-leaf decor-2">🌿</div>
+                <div class="decor-leaf decor-3">🌱</div>
+            </div>
+
+            <div class="container hero-container">
+                <div class="hero-content">
                     <h1 class="hero-title">
                         Discover, Cook<br>
-                        and <span>Share</span><br>
-                        <span class="orange">Delicious Recipes</span>
+                        and <span class="highlight-green">Share</span><br>
+                        <span class="highlight-orange">Delicious Recipes</span>
                     </h1>
-                    <p class="lead mb-4 text-muted">Explore a wide collection of recipes from around the world. Perfect for beginners and experts alike.</p>
-                    
-                    <div class="search-bar mb-4">
-                        <input type="text" class="form-control" placeholder="Search for recipes...">
-                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    <p class="hero-subtitle">
+                        Explore a wide collection of recipes from around the world.
+                    </p>
+
+                    <div class="hero-search-box">
+                        <input type="text" id="heroSearchInput" placeholder="Search for recipes..." autocomplete="off">
+                        <button id="heroSearchBtn" aria-label="Search recipes">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
                     </div>
-                    
-                    <div class="d-flex gap-3">
-                        <a href="#" class="btn btn-primary-custom"><i class="fas fa-th-large me-2"></i> Browse Recipes</a>
-                        <a href="#" class="btn btn-outline-custom"><i class="fas fa-plus me-2"></i> Add Your Recipe</a>
+
+                    <div class="hero-cta-group">
+                        <button class="btn btn-primary" id="browseRecipesBtn">
+                            <i class="fa-solid fa-border-all"></i>
+                            <span>Browse Recipes</span>
+                        </button>
+                        <button class="btn btn-outline" id="addRecipeBtn">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add Your Recipe</span>
+                        </button>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <img src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?q=80&w=1000&auto=format&fit=crop" alt="Delicious Food" class="img-fluid hero-image">
+
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-card">
+                        <img src="assets/images/hero_pasta_dish.jpg" alt="Delicious Spaghetti Pasta with Tomato and Basil" class="hero-img">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    
-    <section class="py-5">
-        <div class="container mt-4">
-            <h3 class="mb-4 fw-bold"><i class="fas fa-fire text-danger me-2"></i>Popular Recipes</h3>
-            <div class="row g-4">
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="card recipe-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Pancakes">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Fluffy Pancakes</h5>
-                            <div class="rating">
-                                <i class="fas fa-star"></i> 4.6 <span>(120)</span>
-                            </div>
-                        </div>
+        
+        <section class="popular-recipes-section" id="recipes">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">🔥 Popular Recipes</h2>
+                    <div class="category-filters" id="categoryFilters">
+                        <button class="filter-chip active" data-category="all">All</button>
+                        <button class="filter-chip" data-category="Breakfast">Breakfast</button>
+                        <button class="filter-chip" data-category="Main Course">Main Course</button>
+                        <button class="filter-chip" data-category="Italian">Italian</button>
+                        <button class="filter-chip" data-category="Dessert">Dessert</button>
+                        <button class="filter-chip" data-category="Asian">Asian</button>
                     </div>
                 </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="card recipe-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Biriyani">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Chicken Biriyani</h5>
-                            <div class="rating">
-                                <i class="fas fa-star"></i> 4.8 <span>(98)</span>
-                            </div>
-                        </div>
-                    </div>
+
+                <div class="recipes-grid" id="recipesGrid">
+                    
                 </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="card recipe-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Pasta">
+            </div>
+        </section>
+
+        
+        <section class="about-section" id="about">
+            <div class="container about-container">
+                <div class="about-text">
+                    <h2>Join Our Culinary Community</h2>
+                    <p>Digital Recipe Book brings together food lovers, home cooks, and professional chefs to share authentic flavors, easy-to-follow guides, and culinary secrets from across the globe.</p>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <span class="stat-num">500+</span>
+                            <span class="stat-label">Recipes</span>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Spaghetti Carbonara</h5>
-                            <div class="rating">
-                                <i class="fas fa-star"></i> 4.5 <span>(76)</span>
-                            </div>
+                        <div class="stat-item">
+                            <span class="stat-num">50k+</span>
+                            <span class="stat-label">Foodies</span>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="card recipe-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Cake">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Chocolate Cake</h5>
-                            <div class="rating">
-                                <i class="fas fa-star"></i> 4.7 <span>(64)</span>
-                            </div>
+                        <div class="stat-item">
+                            <span class="stat-num">4.9★</span>
+                            <span class="stat-label">Rating</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     
-    <footer class="text-center" style="background-color: #388e3c; color: white; padding: 20px 0; margin-top: 40px;">
-        <div class="container">
-            <p class="mb-0">&copy; 2026 Digital Recipe Book. All rights reserved.</p>
+    <footer class="footer" id="contact">
+        <div class="container footer-container">
+            <div class="copyright-text">
+                &copy; 2026 Digital Recipe Book
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
         </div>
     </footer>
 
+    
+    <div class="modal-overlay" id="recipeModal">
+        <div class="modal-content recipe-detail-modal">
+            <button class="modal-close" id="closeRecipeModal">&times;</button>
+            <div class="recipe-detail-body" id="recipeDetailBody">
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="modal-overlay" id="addRecipeModal">
+        <div class="modal-content form-modal">
+            <button class="modal-close" id="closeAddModal">&times;</button>
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-utensils"></i> Add Your Recipe</h3>
+                <p>Share your culinary creation with the world!</p>
+            </div>
+            <form id="addRecipeForm" class="recipe-form">
+                <div class="form-group">
+                    <label for="recipeTitle">Recipe Title</label>
+                    <input type="text" id="recipeTitle" required placeholder="e.g. Creamy Tuscan Chicken">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="recipeCategory">Category</label>
+                        <select id="recipeCategory" required>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Main Course" selected>Main Course</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Dessert">Dessert</option>
+                            <option value="Asian">Asian</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipeRating">Rating (1.0 - 5.0)</label>
+                        <input type="number" id="recipeRating" min="1" max="5" step="0.1" value="4.8" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="recipePrepTime">Prep Time (mins)</label>
+                        <input type="number" id="recipePrepTime" placeholder="25" value="25" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipeReviews">Review Count</label>
+                        <input type="number" id="recipeReviews" placeholder="42" value="42" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recipeImage">Image URL or Preset</label>
+                    <input type="text" id="recipeImage" placeholder="assets/images/spaghetti_carbonara.jpg" value="assets/images/spaghetti_carbonara.jpg" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipeIngredients">Ingredients (comma separated)</label>
+                    <textarea id="recipeIngredients" rows="3" required placeholder="2 cups flour, 1 egg, 1/2 cup milk, 1 tbsp sugar"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Publish Recipe</button>
+            </form>
+        </div>
+    </div>
+
+    
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content form-modal">
+            <button class="modal-close" id="closeLoginModal">&times;</button>
+            <div class="modal-header">
+                <h3><i class="fa-regular fa-circle-user"></i> Welcome Back</h3>
+                <p>Sign in to your Digital Recipe Book account</p>
+            </div>
+            <form id="loginForm" class="recipe-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required placeholder="chef@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
 </body>
 </html>
