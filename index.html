@@ -1,154 +1,29 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Recipe Book - Discover, Cook & Share Delicious Recipes</title>
-    <meta name="description" content="Explore a wide collection of recipes from around the world. Discover, cook and share your favorite delicious recipes with Digital Recipe Book.">
-    
+    <title>Digital Recipe Book - Discover, Cook & Share Recipes</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
-
-    
-    <style>
-        :root {
-            --primary-green: #257838;
-            --primary-green-hover: #1e622d;
-            --primary-orange: #ee5d20;
-            --primary-orange-hover: #d84c12;
-            --text-dark: #1e252b;
-            --text-muted: #5a6578;
-            --bg-hero: linear-gradient(135deg, #fff8eb 0%, #fef0d2 50%, #fde7b7 100%);
-            --bg-light: #f8faf9;
-            --card-bg: #ffffff;
-            --star-gold: #ffb800;
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-pill: 9999px;
-            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --font-heading: 'Outfit', sans-serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background-color: var(--card-bg); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        button { cursor: pointer; border: none; outline: none; font-family: inherit; transition: var(--transition); }
-
-        .text-green { color: var(--primary-green); }
-        .text-orange { color: var(--primary-orange); }
-        .highlight-green { color: var(--primary-green); font-weight: 800; }
-        .highlight-orange { color: var(--primary-orange); font-weight: 800; }
-
-        .navbar { position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.05); padding: 14px 0; }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; }
-        .brand-logo { display: flex; align-items: center; gap: 12px; }
-        .logo-icon svg { width: 38px; height: 38px; }
-        .logo-text { display: flex; flex-direction: column; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; line-height: 1.1; }
-        .nav-links { display: flex; align-items: center; gap: 32px; }
-        .nav-link { font-weight: 600; font-size: 0.95rem; color: var(--text-muted); position: relative; padding: 6px 0; }
-        .nav-link:hover { color: var(--primary-orange); }
-        .nav-link.active { color: var(--primary-orange); font-weight: 700; }
-        .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background-color: var(--primary-orange); border-radius: var(--radius-pill); }
-        .nav-actions { display: flex; align-items: center; gap: 16px; }
-        .search-trigger-btn { background: none; font-size: 1.2rem; color: var(--text-dark); padding: 8px; border-radius: 50%; }
-        .login-btn { display: flex; align-items: center; gap: 8px; background-color: var(--primary-orange); color: white; font-weight: 700; padding: 10px 22px; border-radius: var(--radius-md); box-shadow: 0 4px 14px rgba(238, 93, 32, 0.3); }
-        .login-btn:hover { background-color: var(--primary-orange-hover); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(238, 93, 32, 0.4); }
-        .mobile-menu-toggle { display: none; background: none; font-size: 1.4rem; color: var(--text-dark); }
-
-        .hero-section { position: relative; background: var(--bg-hero); padding: 60px 0 80px; overflow: hidden; }
-        .hero-bg-decorations .decor-leaf { position: absolute; font-size: 2rem; opacity: 0.25; user-select: none; pointer-events: none; animation: float 6s ease-in-out infinite alternate; }
-        .decor-1 { top: 15%; left: 3%; animation-delay: 0s; }
-        .decor-2 { bottom: 10%; left: 45%; animation-delay: 2s; }
-        .decor-3 { top: 20%; right: 5%; animation-delay: 4s; }
-        @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 100% { transform: translateY(-15px) rotate(12deg); } }
-
-        .hero-container { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; }
-        .hero-content { max-width: 540px; }
-        .hero-title { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; line-height: 1.15; color: var(--text-dark); margin-bottom: 16px; letter-spacing: -0.02em; }
-        .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; font-weight: 500; }
-        .hero-search-box { position: relative; display: flex; align-items: center; background: #ffffff; border-radius: var(--radius-pill); padding: 6px 6px 6px 24px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07); margin-bottom: 36px; border: 1px solid rgba(0,0,0,0.04); }
-        .hero-search-box input { width: 100%; border: none; outline: none; font-size: 1rem; font-family: inherit; color: var(--text-dark); background: transparent; }
-        .hero-search-box button { background-color: var(--primary-green); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-        .hero-cta-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: var(--radius-md); font-weight: 700; font-size: 1rem; transition: var(--transition); }
-        .btn-primary { background-color: var(--primary-green); color: white; box-shadow: 0 4px 16px rgba(37, 120, 56, 0.3); }
-        .btn-outline { background-color: transparent; color: var(--primary-orange); border: 2px solid var(--primary-orange); }
-
-        .hero-image-wrapper { position: relative; display: flex; justify-content: center; align-items: center; }
-        .hero-image-card { position: relative; width: 100%; max-width: 580px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); transition: var(--transition); }
-        .hero-img { width: 100%; height: 380px; object-fit: cover; display: block; }
-
-        .popular-recipes-section { padding: 70px 0; background-color: #ffffff; }
-        .section-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-        .section-title { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--text-dark); }
-        .category-filters { display: flex; align-items: center; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
-        .filter-chip { padding: 8px 20px; border-radius: var(--radius-pill); background-color: #f1f5f9; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; white-space: nowrap; border: 1px solid transparent; }
-        .filter-chip.active { background-color: var(--primary-green); color: white; }
-
-        .recipes-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .recipe-card { background-color: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); border: 1px solid #f1f5f9; transition: var(--transition); cursor: pointer; display: flex; flex-direction: column; }
-        .recipe-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); }
-        .card-img-container { position: relative; width: 100%; height: 160px; overflow: hidden; }
-        .card-img { width: 100%; height: 100%; object-fit: cover; }
-        .card-badge { position: absolute; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.9); padding: 4px 10px; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 700; color: var(--primary-green); }
-        .card-info { padding: 16px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
-        .card-title { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
-        .card-rating { display: flex; align-items: center; gap: 6px; font-size: 0.88rem; font-weight: 700; color: var(--text-dark); }
-        .star-icon { color: var(--star-gold); }
-        .review-count { color: var(--text-muted); font-weight: 500; }
-
-        .about-section { padding: 60px 0; background: #f8faf9; border-top: 1px solid #e2e8f0; }
-        .about-container { text-align: center; max-width: 800px; }
-        .about-text h2 { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; }
-        .about-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 36px; }
-        .stats-row { display: flex; justify-content: center; gap: 60px; }
-        .stat-num { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--primary-green); }
-        .stat-label { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); }
-
-        .footer { background-color: var(--primary-green); color: white; padding: 18px 0; }
-        .footer-container { display: flex; align-items: center; justify-content: space-between; }
-        .social-links { display: flex; align-items: center; gap: 20px; }
-
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: var(--transition); padding: 20px; }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: white; border-radius: var(--radius-lg); width: 100%; max-width: 580px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: var(--shadow-lg); transform: scale(0.92); transition: var(--transition); padding: 32px; }
-        .modal-overlay.active .modal-content { transform: scale(1); }
-        .modal-close { position: absolute; top: 20px; right: 20px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; }
-
-        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--text-dark); color: white; padding: 14px 24px; border-radius: var(--radius-md); font-weight: 600; opacity: 0; transform: translateY(20px); transition: var(--transition); z-index: 3000; }
-        .toast.show { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 1200px) { .recipes-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 992px) { .hero-container { grid-template-columns: 1fr; text-align: center; } .hero-content { margin: 0 auto; } .hero-search-box { max-width: 450px; margin: 0 auto 32px; } .hero-cta-group { justify-content: center; } }
-        @media (max-width: 768px) { .recipes-grid { grid-template-columns: repeat(2, 1fr); } .nav-links { display: none; } .mobile-menu-toggle { display: block; } }
-        @media (max-width: 480px) { .recipes-grid { grid-template-columns: 1fr; } }
-    </style>
 </head>
 <body>
 
-    
     <header class="navbar">
         <div class="container nav-container">
+            
             <a href="index.html" class="brand-logo">
                 <div class="logo-icon">
-                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 5C14.4772 5 10 9.47715 10 15C10 17.5 10.9 19.8 12.4 21.5C9.5 22.8 7.5 25.6 7.5 29H32.5C32.5 25.6 30.5 22.8 27.6 21.5C29.1 19.8 30 17.5 30 15C30 9.47715 25.5228 5 20 5Z" fill="#2E7D32"/>
+                    <svg viewBox="0 0 40 40" fill="none" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5C14.4772 5 10 9.47715 10 15C10 17.5 10.9 19.8 12.4 21.5C9.5 22.8 7.5 25.6 7.5 29H32.5C32.5 25.6 30.5 22.8 27.6 21.5C29.1 19.8 30 17.5 30 15C30 9.47715 25.5228 5 20 5Z" fill="#257838"/>
                         <path d="M8 29H32V32C32 33.6569 30.6569 35 29 35H11C9.34315 35 8 33.6569 8 32V29Z" fill="#EE5D20"/>
                         <path d="M14 15C14 11.6863 16.6863 9 20 9C23.3137 9 26 11.6863 26 15" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
                         <circle cx="20" cy="20" r="2" fill="white"/>
@@ -160,6 +35,7 @@
                 </div>
             </a>
 
+            
             <nav class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#recipes" class="nav-link">Recipes</a>
@@ -168,120 +44,113 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
+            
             <div class="nav-actions">
-                <button class="search-trigger-btn" id="searchTriggerBtn" aria-label="Open Search">
+                <button class="search-trigger-btn" id="searchTriggerBtn" title="Search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
                 <a href="login.html" class="login-btn" id="loginBtn">
                     <i class="fa-regular fa-user"></i>
                     <span>Login</span>
                 </a>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
             </div>
         </div>
     </header>
 
-    
-    <main>
-        
-        <section class="hero-section" id="home">
-            <div class="hero-bg-decorations">
-                <div class="decor-leaf decor-1">🍃</div>
-                <div class="decor-leaf decor-2">🌿</div>
-                <div class="decor-leaf decor-3">🌱</div>
-            </div>
+    <section class="hero-section" id="home">
+        <div class="container hero-container">
+            
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Discover, Cook<br>
+                    and <span class="highlight-green">Share</span><br>
+                    <span class="highlight-orange">Delicious Recipes</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Explore a wide collection of recipes from around the world.
+                </p>
 
-            <div class="container hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        Discover, Cook<br>
-                        and <span class="highlight-green">Share</span><br>
-                        <span class="highlight-orange">Delicious Recipes</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        Explore a wide collection of recipes from around the world.
-                    </p>
-
-                    <div class="hero-search-box">
-                        <input type="text" id="heroSearchInput" placeholder="Search for recipes..." autocomplete="off">
-                        <button id="heroSearchBtn" aria-label="Search recipes">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
-
-                    <div class="hero-cta-group">
-                        <button class="btn btn-primary" id="browseRecipesBtn">
-                            <i class="fa-solid fa-border-all"></i>
-                            <span>Browse Recipes</span>
-                        </button>
-                        <button class="btn btn-outline" id="addRecipeBtn">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>Add Your Recipe</span>
-                        </button>
-                    </div>
+                
+                <div class="hero-search-box">
+                    <input type="text" id="heroSearchInput" placeholder="Search for recipes...">
+                    <button id="heroSearchBtn" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
 
-                <div class="hero-image-wrapper">
-                    <div class="hero-image-card">
-                        <img src="assets/images/hero_pasta_dish.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1495521821757-a1efb6729352?q=80&w=1000&auto=format&fit=crop';" alt="Delicious Spaghetti Pasta with Tomato and Basil" class="hero-img">
-                    </div>
+                
+                <div class="hero-cta-group">
+                    <button class="btn btn-primary" id="browseRecipesBtn">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span>Browse Recipes</span>
+                    </button>
+                    <button class="btn btn-outline" id="addRecipeBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Add Your Recipe</span>
+                    </button>
                 </div>
             </div>
-        </section>
 
-        
-        <section class="popular-recipes-section" id="recipes">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">🔥 Popular Recipes</h2>
-                    <div class="category-filters" id="categoryFilters">
-                        <button class="filter-chip active" data-category="all">All</button>
-                        <button class="filter-chip" data-category="Breakfast">Breakfast</button>
-                        <button class="filter-chip" data-category="Main Course">Main Course</button>
-                        <button class="filter-chip" data-category="Italian">Italian</button>
-                        <button class="filter-chip" data-category="Dessert">Dessert</button>
-                        <button class="filter-chip" data-category="Asian">Asian</button>
-                    </div>
-                </div>
-
-                <div class="recipes-grid" id="recipesGrid">
-                    
+            
+            <div class="hero-image-wrapper">
+                <div class="hero-image-card">
+                    <img src="assets/images/hero_pasta_dish.jpg" 
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1495521821757-a1efb6729352?q=80&w=1000&auto=format&fit=crop';" 
+                         alt="Spaghetti Pasta" 
+                         class="hero-img">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        
-        <section class="about-section" id="about">
-            <div class="container about-container">
-                <div class="about-text">
-                    <h2>Join Our Culinary Community</h2>
-                    <p>Digital Recipe Book brings together food lovers, home cooks, and professional chefs to share authentic flavors, easy-to-follow guides, and culinary secrets from across the globe.</p>
-                    <div class="stats-row">
-                        <div class="stat-item">
-                            <span class="stat-num">500+</span>
-                            <span class="stat-label">Recipes</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-num">50k+</span>
-                            <span class="stat-label">Foodies</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-num">4.9★</span>
-                            <span class="stat-label">Rating</span>
-                        </div>
-                    </div>
+    <section class="popular-recipes-section" id="recipes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ðŸ”¥ Popular Recipes</h2>
+                
+                
+                <div class="category-filters" id="categoryFilters">
+                    <button class="filter-chip active" data-category="all">All</button>
+                    <button class="filter-chip" data-category="Breakfast">Breakfast</button>
+                    <button class="filter-chip" data-category="Main Course">Main Course</button>
+                    <button class="filter-chip" data-category="Italian">Italian</button>
+                    <button class="filter-chip" data-category="Dessert">Dessert</button>
+                    <button class="filter-chip" data-category="Asian">Asian</button>
                 </div>
             </div>
-        </section>
-    </main>
 
-    
+            
+            <div class="recipes-grid" id="recipesGrid">
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container about-container">
+            <h2>Join Our Culinary Community</h2>
+            <p>Digital Recipe Book brings together food lovers, home cooks, and professional chefs to share authentic flavors, easy-to-follow guides, and culinary secrets from across the globe.</p>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-num">500+</span>
+                    <span class="stat-label">Recipes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">50k+</span>
+                    <span class="stat-label">Foodies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">4.9â˜…</span>
+                    <span class="stat-label">Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer" id="contact">
         <div class="container footer-container">
             <div class="copyright-text">
-                &copy; 2026 Digital Recipe Book
+                &copy; 2026 Digital Recipe Book. All rights reserved.
             </div>
             <div class="social-links">
                 <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -299,9 +168,9 @@
         </div>
     </div>
 
-    
-    <div class="toast" id="toast"></div>
+        <div class="toast" id="toast"></div>
 
-    <script src="app.js"></script>
+        <script src="app.js"></script>
 </body>
 </html>
+
