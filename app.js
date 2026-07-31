@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Initial Recipe Data matching the exact screenshot items
+    // Initial Recipe Data with Local Image + Online High-Res Fallback
     const initialRecipes = [
         {
             id: 1,
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rating: 4.6,
             reviews: 120,
             image: "assets/images/fluffy_pancakes.jpg",
+            fallbackImage: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?q=80&w=800&auto=format&fit=crop",
             prepTime: "15 mins",
             ingredients: [
                 "1 1/2 cups all-purpose flour",
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rating: 4.8,
             reviews: 98,
             image: "assets/images/chicken_biryani.jpg",
+            fallbackImage: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=800&auto=format&fit=crop",
             prepTime: "45 mins",
             ingredients: [
                 "500g Basmati rice",
@@ -49,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rating: 4.5,
             reviews: 76,
             image: "assets/images/spaghetti_carbonara.jpg",
+            fallbackImage: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=800&auto=format&fit=crop",
             prepTime: "25 mins",
             ingredients: [
                 "400g Spaghetti pasta",
@@ -67,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rating: 4.7,
             reviews: 64,
             image: "assets/images/chocolate_cake.jpg",
+            fallbackImage: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
             prepTime: "50 mins",
             ingredients: [
                 "2 cups sugar",
@@ -87,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rating: 4.4,
             reviews: 52,
             image: "assets/images/veggie_stir_fry.jpg",
+            fallbackImage: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=800&auto=format&fit=crop",
             prepTime: "20 mins",
             ingredients: [
                 "1 cup broccoli florets",
@@ -119,17 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addRecipeBtn = document.getElementById('addRecipeBtn');
     const addRecipeModal = document.getElementById('addRecipeModal');
-    const closeAddModal = document.getElementById('closeAddModal');
-    const addRecipeForm = document.getElementById('addRecipeForm');
 
-    const loginBtn = document.getElementById('loginBtn');
-    const loginModal = document.getElementById('loginModal');
-    const closeLoginModal = document.getElementById('closeLoginModal');
-    const loginForm = document.getElementById('loginForm');
     const toast = document.getElementById('toast');
 
-    // Render Recipes
+    // Render Recipes with Fail-Safe Image Fallback
     function renderRecipes() {
+        if (!recipesGrid) return;
         recipesGrid.innerHTML = '';
 
         const filtered = recipes.filter(recipe => {
@@ -156,7 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.setAttribute('data-id', recipe.id);
             card.innerHTML = `
                 <div class="card-img-container">
-                    <img src="${recipe.image}" alt="${recipe.title}" class="card-img" loading="lazy">
+                    <img src="${recipe.image}" 
+                         onerror="this.onerror=null; this.src='${recipe.fallbackImage}';" 
+                         alt="${recipe.title}" 
+                         class="card-img" 
+                         loading="lazy">
                     <span class="card-badge">${recipe.category}</span>
                 </div>
                 <div class="card-info">
@@ -177,7 +181,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Open Recipe Detail Modal
     function openRecipeDetail(recipe) {
         recipeDetailBody.innerHTML = `
-            <img src="${recipe.image}" alt="${recipe.title}" class="recipe-detail-img">
+            <img src="${recipe.image}" 
+                 onerror="this.onerror=null; this.src='${recipe.fallbackImage}';" 
+                 alt="${recipe.title}" 
+                 class="recipe-detail-img">
             <div class="recipe-detail-info">
                 <div class="recipe-detail-header">
                     <div>
@@ -206,39 +213,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Modal Helpers
     function openModal(modal) {
+        if (!modal) return;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
     function closeModal(modal) {
+        if (!modal) return;
         modal.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Toast Notification
-    function showToast(message) {
-        toast.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
+    // Event Listeners
+    if (heroSearchInput) {
+        heroSearchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderRecipes();
+        });
     }
 
-    // Event Listeners
-    heroSearchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value;
-        renderRecipes();
-    });
+    if (heroSearchBtn) {
+        heroSearchBtn.addEventListener('click', () => {
+            searchQuery = heroSearchInput.value;
+            renderRecipes();
+            document.getElementById('recipes').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 
-    heroSearchBtn.addEventListener('click', () => {
-        searchQuery = heroSearchInput.value;
-        renderRecipes();
-        document.getElementById('recipes').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    browseRecipesBtn.addEventListener('click', () => {
-        document.getElementById('recipes').scrollIntoView({ behavior: 'smooth' });
-    });
+    if (browseRecipesBtn) {
+        browseRecipesBtn.addEventListener('click', () => {
+            document.getElementById('recipes').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 
     // Category Filter Chips
     categoryChips.forEach(chip => {
@@ -250,82 +256,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add Recipe Handlers
-    addRecipeBtn.addEventListener('click', () => openModal(addRecipeModal));
-    closeAddModal.addEventListener('click', () => closeModal(addRecipeModal));
+    if (closeRecipeModal) {
+        closeRecipeModal.addEventListener('click', () => closeModal(recipeModal));
+    }
 
-    addRecipeForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const title = document.getElementById('recipeTitle').value;
-        const category = document.getElementById('recipeCategory').value;
-        const rating = parseFloat(document.getElementById('recipeRating').value) || 4.5;
-        const reviews = parseInt(document.getElementById('recipeReviews').value) || 1;
-        const prepTime = document.getElementById('recipePrepTime').value + " mins";
-        const image = document.getElementById('recipeImage').value || "assets/images/spaghetti_carbonara.jpg";
-        const ingredientsText = document.getElementById('recipeIngredients').value;
-        const ingredients = ingredientsText.split(',').map(i => i.trim()).filter(i => i.length > 0);
-
-        const newRecipe = {
-            id: Date.now(),
-            title,
-            category,
-            rating,
-            reviews,
-            image,
-            prepTime,
-            ingredients: ingredients.length > 0 ? ingredients : ["Fresh ingredients"],
-            instructions: "Combine all fresh ingredients according to step-by-step cooking instructions and serve warm!"
-        };
-
-        recipes.unshift(newRecipe);
-        renderRecipes();
-        closeModal(addRecipeModal);
-        addRecipeForm.reset();
-        showToast(`🎉 "${title}" successfully added!`);
-        document.getElementById('recipes').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // Login Handlers
-    loginBtn.addEventListener('click', () => openModal(loginModal));
-    closeLoginModal.addEventListener('click', () => closeModal(loginModal));
-
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.getElementById('loginEmail').value;
-        closeModal(loginModal);
-        showToast(`Welcome back, ${email.split('@')[0]}! 👋`);
-    });
-
-    closeRecipeModal.addEventListener('click', () => closeModal(recipeModal));
-
-    // Close modal on background click
-    [recipeModal, addRecipeModal, loginModal].forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal(modal);
-            }
+    if (recipeModal) {
+        recipeModal.addEventListener('click', (e) => {
+            if (e.target === recipeModal) closeModal(recipeModal);
         });
-    });
-
-    // Mobile Nav Toggle
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const navLinks = document.getElementById('navLinks');
-    mobileMenuToggle.addEventListener('click', () => {
-        if (navLinks.style.display === 'flex') {
-            navLinks.style.display = 'none';
-        } else {
-            navLinks.style.display = 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.background = '#ffffff';
-            navLinks.style.padding = '20px';
-            navLinks.style.boxShadow = 'var(--shadow-md)';
-        }
-    });
+    }
 
     // Initial Render
     renderRecipes();
