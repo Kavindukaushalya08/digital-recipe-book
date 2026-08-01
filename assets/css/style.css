@@ -1,6 +1,4 @@
 
-
-
 :root {
     --primary-green: #257838;
     --primary-green-hover: #1e622d;
@@ -23,7 +21,6 @@
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 }
-
 
 * {
     margin: 0;
@@ -62,7 +59,6 @@ button {
     font-family: inherit;
     transition: var(--transition);
 }
-
 
 .text-green { color: var(--primary-green); }
 .text-orange { color: var(--primary-orange); }
@@ -302,8 +298,6 @@ button {
     background-color: var(--primary-green-hover);
     transform: scale(1.05);
 }
-
-
 .hero-cta-group {
     display: flex;
     align-items: center;
@@ -374,7 +368,6 @@ button {
     object-fit: cover;
     display: block;
 }
-
 
 .popular-recipes-section {
     padding: 70px 0;
@@ -537,7 +530,6 @@ button {
     color: var(--text-muted);
     font-weight: 500;
 }
-
 
 .login-page-body {
     background-color: #d1d5db;
