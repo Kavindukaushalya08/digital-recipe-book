@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Your Recipe - Digital Recipe Book</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="add-recipe-page-body">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5C14.4772 5 10 9.47715 10 15C10 17.5 10.9 19.8 12.4 21.5C9.5 22.8 7.5 25.6 7.5 29H32.5C32.5 25.6 30.5 22.8 27.6 21.5C29.1 19.8 30 17.5 30 15C30 9.47715 25.5228 5 20 5Z" fill="#257838"/>
+                        <path d="M8 29H32V32C32 33.6569 30.6569 35 29 35H11C9.34315 35 8 33.6569 8 32V29Z" fill="#EE5D20"/>
+                        <path d="M14 15C14 11.6863 16.6863 9 20 9C23.3137 9 26 11.6863 26 15" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="20" cy="20" r="2" fill="white"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="text-green">Digital</span>
+                    <span class="text-orange">Recipe Book</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="recipes.html" class="nav-link">Recipes</a>
+                <a href="index.html#categories" class="nav-link">Categories</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- User Actions -->
+            <div class="nav-actions">
+                <button class="search-trigger-btn" id="searchTriggerBtn" title="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <a href="login.html" class="login-btn" id="loginBtn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="banner-strip"></div>
+
+    <section class="add-recipe-section container">
+        <div class="add-recipe-header">
+            <h2><i class="fa-solid fa-hat-chef"></i> Add Your Recipe</h2>
+        </div>
+        
+        <form id="addRecipeForm" class="add-recipe-form">
+            <div class="form-grid">
+                
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="recipeTitle">Recipe title</label>
+                        <input type="text" id="recipeTitle" placeholder="Enter recipe title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipeCategory">Category</label>
+                        <select id="recipeCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Main Course">Main Course</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Dessert">Dessert</option>
+                            <option value="Asian">Asian</option>
+                            <option value="Dinner">Dinner</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prepTime">Preparation Time</label>
+                            <input type="text" id="prepTime" placeholder="e.g. 30 min" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="servings">Servings</label>
+                            <input type="text" id="servings" placeholder="e.g. 4" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ingredients">Ingredients (one per line)</label>
+                        <textarea id="ingredients" placeholder="Enter ingredients here ............" rows="6" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="instructions">Instructions (step by step)</label>
+                        <textarea id="instructions" placeholder="Enter step by step instructions............." rows="6" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Instructions (Recipe Image)</label>
+                        <div class="file-upload-box" id="fileUploadBox">
+                            <input type="file" id="recipeImage" accept="image/*" hidden>
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p><strong>Click to upload image</strong><br>or drag and drop</p>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-white" onclick="window.history.back()">Cancel</button>
+                        <button type="submit" class="btn btn-purple"><i class="fa-regular fa-paper-plane"></i> Submit Recipe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floral-decoration"></div>
+        </form>
+    </section>
+
+    <footer class="footer purple-footer" id="contact">
+        <div class="container footer-container">
+            <div class="copyright-text">
+                &copy; 2026 Digital Recipe Book. All rights reserved.
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

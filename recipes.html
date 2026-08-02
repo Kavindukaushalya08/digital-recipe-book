@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Recipe Book - All Recipes</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="recipes-page-body">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5C14.4772 5 10 9.47715 10 15C10 17.5 10.9 19.8 12.4 21.5C9.5 22.8 7.5 25.6 7.5 29H32.5C32.5 25.6 30.5 22.8 27.6 21.5C29.1 19.8 30 17.5 30 15C30 9.47715 25.5228 5 20 5Z" fill="#257838"/>
+                        <path d="M8 29H32V32C32 33.6569 30.6569 35 29 35H11C9.34315 35 8 33.6569 8 32V29Z" fill="#EE5D20"/>
+                        <path d="M14 15C14 11.6863 16.6863 9 20 9C23.3137 9 26 11.6863 26 15" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="20" cy="20" r="2" fill="white"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="text-green">Digital</span>
+                    <span class="text-orange">Recipe Book</span>
+                </div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="recipes.html" class="nav-link active">Recipes</a>
+                <a href="index.html#categories" class="nav-link">Categories</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="search-trigger-btn" id="searchTriggerBtn" title="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <a href="login.html" class="login-btn" id="loginBtn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <div class="recipes-banner">
+        <!-- Reusing hero images to create a food strip -->
+        <img src="assets/images/hero_pasta_dish.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1495521821757-a1efb6729352?q=80&w=400&auto=format&fit=crop';" alt="Food">
+        <img src="assets/images/fluffy_pancakes.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1528207776546-365bb710ee93?q=80&w=400&auto=format&fit=crop';" alt="Food">
+        <img src="assets/images/chicken_biryani.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=400&auto=format&fit=crop';" alt="Food">
+        <img src="assets/images/spaghetti_carbonara.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=400&auto=format&fit=crop';" alt="Food">
+        <img src="assets/images/chocolate_cake.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=400&auto=format&fit=crop';" alt="Food">
+        <img src="assets/images/veggie_stir_fry.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=400&auto=format&fit=crop';" alt="Food">
+    </div>
+
+    <section class="recipes-main-content">
+        <div class="container recipes-page-container">
+            <h1 class="recipes-page-title">All Recipes</h1>
+            
+            <!-- Controls Row -->
+            <div class="recipes-controls">
+                <div class="dropdown-group">
+                    <select class="custom-select" id="mobileCategorySelect">
+                        <option value="all">All Categories</option>
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Main Course">Main Course</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Dessert">Dessert</option>
+                        <option value="Asian">Asian</option>
+                    </select>
+                    <select class="custom-select" id="sortSelect">
+                        <option value="newest">Sort By: Newest</option>
+                        <option value="rating">Sort By: Rating</option>
+                    </select>
+                </div>
+                
+                <div class="recipes-search-box">
+                    <input type="text" id="recipesPageSearch" placeholder="search recipes......">
+                    <button id="recipesPageSearchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
+            <div class="recipes-layout">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-header">Categories</div>
+                    <ul class="sidebar-categories" id="sidebarCategories">
+                        <li class="sidebar-item active" data-category="all">🍽️ All Categories</li>
+                        <li class="sidebar-item" data-category="Breakfast">🍳 Breakfast</li>
+                        <li class="sidebar-item" data-category="Main Course">🍱 Main Course</li>
+                        <li class="sidebar-item" data-category="Italian">🍝 Italian</li>
+                        <li class="sidebar-item" data-category="Dessert">🍰 Dessert</li>
+                        <li class="sidebar-item" data-category="Asian">🥢 Asian</li>
+                    </ul>
+                </aside>
+
+                <!-- Grid -->
+                <div class="content-area">
+                    <div class="recipes-grid" id="recipesGrid">
+                        <!-- Recipes will be injected here by app.js -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="copyright-text">
+                &copy; 2026 Digital Recipe Book
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Recipe Detail Modal -->
+    <div class="modal-overlay" id="recipeModal">
+        <div class="modal-content recipe-detail-modal">
+            <button class="modal-close" id="closeRecipeModal">&times;</button>
+            <div class="recipe-detail-body" id="recipeDetailBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
