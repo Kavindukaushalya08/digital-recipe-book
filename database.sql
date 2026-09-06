@@ -62,3 +62,5 @@ INSERT INTO `recipes` (`title`, `category`, `prep_time`, `rating`, `reviews`, `i
 ('Spaghetti Carbonara', 'Dinner', '25 mins', 4.5, 76, '400g Spaghetti, 150g Pancetta/Bacon, 4 Egg yolks, 1 cup Pecorino cheese, Black pepper', 'Boil spaghetti. Crisp pancetta in a skillet. Mix egg yolks with cheese. Toss hot pasta into pancetta and mix in egg sauce.', 'assets/images/spaghetti_carbonara.jpg'),
 ('Chocolate Cake', 'Dessert', '50 mins', 4.7, 64, '2 cups sugar, 1 3/4 cups flour, 3/4 cup cocoa powder, 2 eggs, 1 cup milk, 1/2 cup oil', 'Mix dry ingredients. Add eggs, milk, oil, and vanilla. Stir in boiling water. Bake at 350F for 35 mins.', 'assets/images/chocolate_cake.jpg'),
 ('Veggie Stir Fry', 'Snacks', '20 mins', 4.4, 52, '1 cup broccoli, 1 bell pepper, 1 cup snap peas, 3 tbsp soy sauce, 1 tbsp sesame oil', 'Stir-fry garlic and vegetables in sesame oil over high heat. Add soy sauce and serve warm.', 'assets/images/veggie_stir_fry.jpg');
+
+-- Database optimized and configured by Sahan

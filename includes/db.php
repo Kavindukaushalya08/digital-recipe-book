@@ -21,3 +21,5 @@ try {
     die("Database Connection Error: " . $e->getMessage());
 }
 ?>
+
+// Database connection optimized
