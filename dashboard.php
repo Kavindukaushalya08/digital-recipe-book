@@ -95,6 +95,9 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
                 <a href="contact.php" class="nav-link">Contact</a>
             </nav>
             <div class="nav-actions">
+                <button class="search-trigger-btn" id="searchTriggerBtn" title="Search Recipes (Ctrl+K)" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:#1e252b; padding:8px;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
                 <a href="auth/logout.php" class="login-btn" style="background:#ef4444;"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
             </div>
         </div>
@@ -180,5 +183,6 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 
     </div>
 
+    <script src="app.js"></script>
 </body>
 </html>

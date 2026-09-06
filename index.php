@@ -65,6 +65,9 @@ try {
             </nav>
 
             <div class="nav-actions">
+                <button class="search-trigger-btn" id="searchTriggerBtn" title="Search Recipes (Ctrl+K)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
                 <?php if (is_logged_in()): ?>
                     <a href="dashboard.php" class="login-btn" style="background:#00a843;">Dashboard</a>
                     <a href="auth/logout.php" class="login-btn" style="background:#ef4444;">Logout</a>
