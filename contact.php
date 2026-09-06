@@ -105,11 +105,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form action="contact.php" method="POST">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                        <input type="text" id="name" name="name" required placeholder="Kavindu">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="johndoe@example.com">
+                        <input type="email" id="email" name="email" required placeholder="kavindu@example.com">
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
