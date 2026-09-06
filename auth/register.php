@@ -1,21 +1,16 @@
 <?php
 
-
-
 require_once '../includes/db.php';
 require_once '../includes/functions.php';
 
 $message = '';
 $error = '';
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
 
     $username = trim($_POST['username']);
     $email    = trim($_POST['email']);
     $password = trim($_POST['password']);
-
 
     if (empty($username) || empty($email) || empty($password)) {
         $error = "Please fill in all required fields!";
@@ -29,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
 
             $insertStmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
             if ($insertStmt->execute([$username, $email, $hashedPassword])) {

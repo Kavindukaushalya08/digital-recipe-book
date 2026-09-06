@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Your Recipe - Digital Recipe Book</title>
-    
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
 
@@ -35,7 +32,6 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         a { text-decoration: none; color: inherit; }
 
-        /* Navigation Bar */
         .navbar { position: sticky; top: 0; background-color: #ffffff; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.06); padding: 14px 0; }
         .nav-container { display: flex; align-items: center; justify-content: space-between; }
         .brand-logo { display: flex; align-items: center; gap: 12px; }
@@ -49,12 +45,10 @@
         .search-trigger-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-dark); padding: 6px; }
         .login-btn { background-color: var(--primary-orange); color: white; font-weight: 700; padding: 9px 22px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; }
 
-        /* Page Hero */
         .form-page-header { text-align: center; padding: 40px 0 20px; }
         .form-page-title { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; color: #1e252b; margin-bottom: 8px; }
         .form-page-sub { color: var(--text-muted); font-size: 1rem; }
 
-        /* Form Container Card */
         .recipe-form-card { background: var(--card-bg); border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; margin-bottom: 60px; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
         
@@ -79,7 +73,6 @@
 
         .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-        /* Upload Box */
         .upload-drop-zone {
             border: 2px dashed #cbd5e1;
             border-radius: 16px;
@@ -101,17 +94,14 @@
         .upload-drop-zone p { font-size: 0.9rem; color: var(--text-muted); }
         .preview-img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; display: none; }
 
-        /* Form Actions */
         .form-actions-row { display: flex; align-items: center; justify-content: flex-end; gap: 14px; margin-top: 10px; }
         .btn-cancel { padding: 12px 24px; border-radius: 12px; font-weight: 700; color: #64748b; background: #f1f5f9; border: none; cursor: pointer; }
         .btn-cancel:hover { background: #e2e8f0; }
         .btn-submit-recipe { padding: 12px 28px; border-radius: 12px; font-weight: 700; color: #ffffff; background: var(--primary-green); border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; transition: all 0.2s; }
         .btn-submit-recipe:hover { background: var(--primary-green-hover); transform: translateY(-2px); }
 
-        /* Success Alert */
         .success-banner { background: #dcfce7; border: 1px solid #bbf7d0; color: #166534; padding: 16px; border-radius: 12px; margin-bottom: 24px; display: none; text-align: center; font-weight: 700; }
 
-        /* Footer */
         .footer { background-color: var(--primary-green); color: white; padding: 20px 0; }
         .footer-container { display: flex; align-items: center; justify-content: space-between; }
         .social-links { display: flex; gap: 16px; }
@@ -124,7 +114,6 @@
 </head>
 <body>
 
-    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo">
@@ -157,7 +146,6 @@
         </div>
     </header>
 
-    
     <main class="container">
         <div class="form-page-header">
             <h1 class="form-page-title">ðŸ‘¨â€ðŸ³ Share Your Recipe</h1>
@@ -207,7 +195,6 @@
                         </div>
                     </div>
 
-                    
                     <div class="form-col-right">
                         <div class="form-group">
                             <label for="instructions">Cooking Instructions *</label>
@@ -238,7 +225,6 @@
         </div>
     </main>
 
-    
     <footer class="footer">
         <div class="container footer-container">
             <div>&copy; 2026 Digital Recipe Book. Faculty of Technology - RUSL.</div>
@@ -252,7 +238,7 @@
 
     <script src="app.js"></script>
     <script>
-        // Image preview logic
+        
         const imageFile = document.getElementById('imageFile');
         const previewImage = document.getElementById('previewImage');
         let uploadedDataUrl = 'assets/images/hero_pasta_dish.jpg';
@@ -270,7 +256,6 @@
             }
         });
 
-        // Handle recipe submission
         document.getElementById('newRecipeForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -295,12 +280,10 @@
                 instructions: instructions.replace(/\n/g, '<br>')
             };
 
-            // Save to localStorage
             let savedList = JSON.parse(localStorage.getItem('customRecipes') || '[]');
             savedList.unshift(newRecipe);
             localStorage.setItem('customRecipes', JSON.stringify(savedList));
 
-            // Show success banner
             const banner = document.getElementById('successBanner');
             banner.style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });

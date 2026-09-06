@@ -1,16 +1,13 @@
 <?php
 
-
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
-
 
 require_login();
 
 $user = get_logged_in_user();
 $msg = '';
 $err = '';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title        = sanitize_input($_POST['title'] ?? '');
@@ -32,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
 
 $userRecipesStmt = $pdo->prepare("SELECT * FROM recipes WHERE user_id = ? ORDER BY id DESC");
 $userRecipesStmt->execute([$user['id']]);
@@ -73,7 +69,6 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 </head>
 <body style="background-color: #f1f5f9;">
 
-    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.php" class="brand-logo">
@@ -101,8 +96,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
     </header>
 
     <div class="dashboard-container">
-        
-        
+
         <div class="dashboard-header">
             <div class="user-greeting">
                 <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>! ðŸ‘‹</h1>
@@ -121,8 +115,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
         <?php endif; ?>
 
         <div class="dashboard-grid">
-            
-            
+
             <div class="dash-card">
                 <h3 class="dash-card-title"><i class="fa-solid fa-plus-circle"></i> Add New Recipe</h3>
                 <form action="dashboard.php" method="POST">
@@ -157,7 +150,6 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
                 </form>
             </div>
 
-            
             <div class="dash-card">
                 <h3 class="dash-card-title"><i class="fa-solid fa-book-open"></i> My Submitted Recipes (<?php echo count($myRecipes); ?>)</h3>
                 
@@ -183,5 +175,4 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
     <script src="app.js"></script>
 </body>
 </html>
-
 

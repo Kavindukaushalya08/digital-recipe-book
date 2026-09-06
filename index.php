@@ -1,7 +1,5 @@
 ﻿<?php
 
-
-
 if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] !== '') {
     $clean_url = str_replace($_SERVER['PATH_INFO'], '', $_SERVER['REQUEST_URI']);
     header("Location: " . $clean_url);
@@ -11,9 +9,7 @@ if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] !== '') {
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
 
-
 $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
-
 
 $recipes = [];
 try {
@@ -65,7 +61,6 @@ try {
 </head>
 <body>
 
-    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.php" class="brand-logo">
@@ -106,7 +101,6 @@ try {
         </div>
     </header>
 
-    
     <section class="hero-section" id="home">
         <div class="container hero-container">
             <div class="hero-content">
@@ -149,7 +143,6 @@ try {
         </div>
     </section>
 
-    
     <section class="popular-recipes-section" id="recipes">
         <div class="container">
             <div class="section-header">
@@ -164,14 +157,12 @@ try {
                 </div>
             </div>
 
-            
             <div class="recipes-grid" id="recipesGrid">
                 
             </div>
         </div>
     </section>
 
-    
     <section class="about-section" id="about">
         <div class="container about-container">
             <h2>Join Our Culinary Community</h2>
@@ -184,7 +175,6 @@ try {
         </div>
     </section>
 
-    
         <footer class="footer" id="contact">
         <div class="container footer-flex">
             <div>&copy; 2026 Digital Recipe Book. All rights reserved.</div>
@@ -196,7 +186,6 @@ try {
         </div>
     </footer>
 
-    
     <div class="modal-overlay" id="recipeModal">
         <div class="modal-content recipe-detail-modal">
             <button class="modal-close" id="closeRecipeModal">&times;</button>
@@ -207,5 +196,4 @@ try {
     <script src="app.js"></script>
 </body>
 </html>
-
 

@@ -1,12 +1,9 @@
 <?php
 
-
-
 require_once '../includes/db.php';
 require_once '../includes/functions.php';
 
 $error = '';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -21,16 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$loginInput, $loginInput]);
         $user = $stmt->fetch();
 
-
         if ($user && password_verify($password, $user['password'])) {
-            
 
             $_SESSION['user_id']  = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email']    = $user['email'];
             
             session_regenerate_id(true); 
-
 
             header("Location: ../dashboard.php");
             exit();

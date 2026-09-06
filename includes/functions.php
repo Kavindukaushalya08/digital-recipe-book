@@ -1,11 +1,8 @@
 <?php
 
-
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 
 function sanitize_input($data) {
     $data = trim($data);
@@ -14,11 +11,9 @@ function sanitize_input($data) {
     return $data;
 }
 
-
 function is_logged_in() {
     return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 }
-
 
 function require_login() {
     if (!is_logged_in()) {
@@ -26,7 +21,6 @@ function require_login() {
         exit();
     }
 }
-
 
 function get_logged_in_user() {
     if (is_logged_in()) {

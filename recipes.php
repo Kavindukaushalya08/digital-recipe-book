@@ -27,20 +27,16 @@ $jsonRecipes = json_encode($catalogRecipes);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Recipes - Digital Recipe Book</title>
     <meta name="description" content="Browse our complete collection of delicious recipes, categorized by Breakfast, Lunch, Dinner, Desserts, Drinks, and Snacks.">
-    
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
 
-    
     <style>
         :root {
             --primary-green: #257838;
@@ -63,7 +59,6 @@ $jsonRecipes = json_encode($catalogRecipes);
         .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
         a { text-decoration: none; color: inherit; }
 
-        /* Navigation Bar */
         .navbar { position: sticky; top: 0; background-color: #ffffff; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); padding: 14px 0; }
         .nav-container { display: flex; align-items: center; justify-content: space-between; }
         .brand-logo { display: flex; align-items: center; gap: 10px; }
@@ -76,13 +71,11 @@ $jsonRecipes = json_encode($catalogRecipes);
         .nav-actions { display: flex; align-items: center; gap: 16px; }
         .icon-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-dark); }
 
-        /* Top Culinary Banner Strip */
         .banner-strip { background-color: #123719; padding: 12px 0; overflow: hidden; border-bottom: 2px solid #165324; }
         .banner-flex { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
         .banner-item { width: 75px; height: 75px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.8); flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .banner-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Page Heading & Filters Bar */
         .catalog-header-section { padding: 30px 0 20px; }
         .page-title { font-family: var(--font-heading); font-size: 2.6rem; font-weight: 800; color: #164a23; margin-bottom: 20px; }
 
@@ -93,17 +86,14 @@ $jsonRecipes = json_encode($catalogRecipes);
         .toolbar-search-box input { border: none; background: transparent; outline: none; width: 100%; font-size: 0.95rem; font-family: inherit; }
         .toolbar-search-box button { background-color: #00a843; color: white; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-        /* Main Catalog Layout (Sidebar + Grid) */
         .catalog-layout { display: grid; grid-template-columns: 240px 1fr; gap: 24px; padding-bottom: 60px; }
 
-        /* Left Categories Sidebar */
         .sidebar-categories-box { background: #dbe4dd; border-radius: 18px; border: 1px solid #cbd5e1; overflow: hidden; height: fit-content; }
         .sidebar-header { background-color: var(--primary-green); color: white; padding: 14px; text-align: center; font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; }
         .sidebar-menu { list-style: none; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
         .sidebar-item { padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: 0.92rem; color: var(--text-dark); cursor: pointer; display: flex; align-items: center; gap: 10px; transition: all 0.2s ease; }
         .sidebar-item:hover, .sidebar-item.active { background-color: #cbd5e1; color: var(--primary-green); }
 
-        /* Right 4-Column Cards Grid */
         .recipes-4col-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
         .recipe-card-alt { background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
@@ -117,9 +107,8 @@ $jsonRecipes = json_encode($catalogRecipes);
         .fav-heart-icon { color: #94a3b8; cursor: pointer; font-size: 1rem; }
         .fav-heart-icon:hover, .fav-heart-icon.liked { color: #e53935; }
 
-        /* Footer */
         .footer { background-color: var(--primary-green); color: white; padding: 18px 0; font-size: 0.9rem; }
-        /* Modal Overlay & Search Popup */
+        
         .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 99999; display: none; align-items: flex-start; justify-content: center; padding: 70px 20px 30px; }
         .modal-overlay.active { display: flex; }
         .search-modal-container { background: #ffffff; width: 100%; max-width: 680px; border-radius: 20px; box-shadow: 0 25px 60px -15px rgba(0,0,0,0.35); overflow: hidden; display: flex; flex-direction: column; max-height: 80vh; }
@@ -147,9 +136,6 @@ $jsonRecipes = json_encode($catalogRecipes);
 </head>
 <body>
 
-    
-    
-    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.php" class="brand-logo">
@@ -185,9 +171,6 @@ $jsonRecipes = json_encode($catalogRecipes);
         </div>
     </header>
 
-    
-    
-    
     <div class="banner-strip">
         <div class="container banner-flex">
             <div class="banner-item"><img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=300&auto=format&fit=crop" alt="Tomato Soup"></div>
@@ -200,13 +183,9 @@ $jsonRecipes = json_encode($catalogRecipes);
         </div>
     </div>
 
-    
-    
-    
     <div class="container catalog-header-section">
         <h1 class="page-title">All Recipes</h1>
 
-        
         <div class="toolbar-row">
             <div style="display: flex; gap: 14px;">
                 <select class="select-filter" id="categorySelect">
@@ -226,19 +205,14 @@ $jsonRecipes = json_encode($catalogRecipes);
                 </select>
             </div>
 
-            
             <div class="toolbar-search-box">
                 <input type="text" id="catalogSearchInput" placeholder="search recipes......">
                 <button id="catalogSearchBtn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
 
-        
-        
-        
         <div class="catalog-layout">
-            
-            
+
             <aside class="sidebar-categories-box">
                 <div class="sidebar-header">Categories</div>
                 <ul class="sidebar-menu">
@@ -252,7 +226,6 @@ $jsonRecipes = json_encode($catalogRecipes);
                 </ul>
             </aside>
 
-            
             <main class="recipes-4col-grid" id="catalogGrid">
                 
             </main>
@@ -260,9 +233,6 @@ $jsonRecipes = json_encode($catalogRecipes);
         </div>
     </div>
 
-    
-    
-    
     <footer class="footer">
         <div class="container footer-flex">
             <div>&copy; 2026 Digital Recipe Book. All rights reserved.</div>
@@ -274,17 +244,13 @@ $jsonRecipes = json_encode($catalogRecipes);
         </div>
     </footer>
 
-    
-    
-    
     <script>
-        // STEP 1: Simple Dataset for the 8 Recipes shown in reference screenshot
+        
         const catalogRecipes = <?= $jsonRecipes ?>;
 
         let selectedCategory = 'all';
         let searchQuery = '';
 
-        // STEP 2: Function to Display Recipe Cards in Grid
         function renderCatalog() {
             const grid = document.getElementById('catalogGrid');
             grid.innerHTML = '';
@@ -319,21 +285,18 @@ $jsonRecipes = json_encode($catalogRecipes);
             });
         }
 
-        // STEP 3: Favorite Heart Icon Toggle
         function toggleHeart(icon) {
             icon.classList.toggle('fa-regular');
             icon.classList.toggle('fa-solid');
             icon.classList.toggle('liked');
         }
 
-        // STEP 4: Attach Event Listeners
         document.addEventListener('DOMContentLoaded', () => {
             const sidebarItems = document.querySelectorAll('.sidebar-item');
             const categorySelect = document.getElementById('categorySelect');
             const searchInput = document.getElementById('catalogSearchInput');
             const searchBtn = document.getElementById('catalogSearchBtn');
 
-            // Sidebar Menu Click Event
             sidebarItems.forEach(item => {
                 item.addEventListener('click', () => {
                     sidebarItems.forEach(i => i.classList.remove('active'));
@@ -344,7 +307,6 @@ $jsonRecipes = json_encode($catalogRecipes);
                 });
             });
 
-            // Top Dropdown Category Select Event
             categorySelect.addEventListener('change', (e) => {
                 selectedCategory = e.target.value;
                 sidebarItems.forEach(i => {
@@ -353,7 +315,6 @@ $jsonRecipes = json_encode($catalogRecipes);
                 renderCatalog();
             });
 
-            // Search Bar Input Event
             searchInput.addEventListener('input', (e) => {
                 searchQuery = e.target.value;
                 renderCatalog();
@@ -364,7 +325,6 @@ $jsonRecipes = json_encode($catalogRecipes);
                 renderCatalog();
             });
 
-            // Initial Render
             renderCatalog();
         });
     </script>

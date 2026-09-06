@@ -4,24 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Recipe Book - Discover, Cook & Share Recipes</title>
-    
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    
-    
-    
     <header class="navbar">
         <div class="container nav-container">
             
@@ -40,7 +34,6 @@
                 </div>
             </a>
 
-            
             <nav class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link active">Home</a>
                 <a href="recipes.php" class="nav-link">Recipes</a>
@@ -49,7 +42,6 @@
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
-            
             <div class="nav-actions">
                 <button class="search-trigger-btn" id="searchTriggerBtn" title="Search">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -62,9 +54,6 @@
         </div>
     </header>
 
-    
-    
-    
     <section class="hero-section" id="home">
         <div class="container hero-container">
             
@@ -78,7 +67,6 @@
                     Explore a wide collection of recipes from around the world.
                 </p>
 
-                
                 <div class="hero-search-box">
                     <input type="text" id="heroSearchInput" placeholder="Search for recipes...">
                     <button id="heroSearchBtn" aria-label="Search">
@@ -86,7 +74,6 @@
                     </button>
                 </div>
 
-                
                 <div class="hero-cta-group">
                     <a href="recipes.php" class="btn btn-primary" id="browseRecipesBtn">
                         <i class="fa-solid fa-border-all"></i>
@@ -99,7 +86,6 @@
                 </div>
             </div>
 
-            
             <div class="hero-image-wrapper">
                 <div class="hero-image-card">
                     <img src="assets/images/hero_pasta_dish.jpg" 
@@ -111,15 +97,11 @@
         </div>
     </section>
 
-    
-    
-    
     <section class="popular-recipes-section" id="recipes">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">ðŸ”¥ Popular Recipes</h2>
-                
-                
+
                 <div class="category-filters" id="categoryFilters">
                     <button class="filter-chip active" data-category="all">All</button>
                     <button class="filter-chip" data-category="Breakfast">Breakfast</button>
@@ -130,16 +112,12 @@
                 </div>
             </div>
 
-            
             <div class="recipes-grid" id="recipesGrid">
                 
             </div>
         </div>
     </section>
 
-    
-    
-    
     <section class="about-section" id="about">
         <div class="container about-container">
             <h2>Join Our Culinary Community</h2>
@@ -161,9 +139,6 @@
         </div>
     </section>
 
-    
-    
-    
     <footer class="footer" id="contact">
         <div class="container footer-container">
             <div class="copyright-text">
@@ -177,10 +152,6 @@
         </div>
     </footer>
 
-    
-    
-    
-    
     <div class="modal-overlay" id="recipeModal">
         <div class="modal-content recipe-detail-modal">
             <button class="modal-close" id="closeRecipeModal">&times;</button>
@@ -188,10 +159,8 @@
         </div>
     </div>
 
-    
     <div class="toast" id="toast"></div>
 
-    
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 
 
-
 const recipesData = [
     {
         id: 1,
@@ -156,9 +155,7 @@ const recipesData = [
     }
 ];
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    
 
     const recipesGrid = document.getElementById('recipesGrid');
     const heroSearchInput = document.getElementById('heroSearchInput');
@@ -173,12 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCategory = 'all';
     let currentSearchTerm = '';
 
-
-
-
     function initSearchModal() {
         let searchOverlay = document.getElementById('searchModalOverlay');
-        
 
         if (!searchOverlay) {
             searchOverlay = document.createElement('div');
@@ -218,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeBtn = document.getElementById('closeSearchModalBtn');
         const categoryBtns = searchOverlay.querySelectorAll('.search-tag-chip');
         let activeModalCat = 'all';
-
 
         function renderSearchResults() {
             const query = (modalInput ? modalInput.value : '').trim().toLowerCase();
@@ -260,7 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `).join('');
 
-
             resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const id = parseInt(item.getAttribute('data-recipe-id'), 10);
@@ -272,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
-
 
         function openSearchModal(initialQuery = '') {
             searchOverlay.style.display = 'flex';
@@ -291,12 +281,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
 
-
         function closeSearchModal() {
             searchOverlay.classList.remove('active');
             searchOverlay.style.display = 'none';
         }
-
 
         if (modalInput) {
             modalInput.addEventListener('input', renderSearchResults);
@@ -321,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-
         const searchTriggers = document.querySelectorAll('.search-trigger-btn, #searchTriggerBtn, #heroSearchBtn, .navbar-search-btn');
         searchTriggers.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -331,7 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 openSearchModal(initialVal);
             });
         });
-
 
         const heroInputElem = document.getElementById('heroSearchInput');
         if (heroInputElem) {
@@ -345,7 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
@@ -361,7 +346,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
 
     function ensureRecipeModal() {
         if (!recipeModal) {
@@ -394,13 +378,10 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-
     function displayRecipes() {
         if (!recipesGrid) return;
-        
 
         recipesGrid.innerHTML = '';
-
 
         const filteredList = recipesData.filter(recipe => {
             const matchesCategory = (currentCategory === 'all') || (recipe.category.toLowerCase() === currentCategory.toLowerCase());
@@ -410,12 +391,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return matchesCategory && matchesSearch;
         });
 
-
         if (filteredList.length === 0) {
             recipesGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #777; padding: 40px;">No recipes match your search.</p>`;
             return;
         }
-
 
         filteredList.forEach(recipe => {
             const cardElement = document.createElement('div');
@@ -438,12 +417,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-
             cardElement.addEventListener('click', () => openRecipeModal(recipe));
             recipesGrid.appendChild(cardElement);
         });
     }
-
 
     function openRecipeModal(recipe) {
         ensureRecipeModal();
@@ -475,7 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
         recipeModal.classList.add('active');
     }
 
-
     if (heroSearchInput) {
         heroSearchInput.addEventListener('input', (e) => {
             currentSearchTerm = e.target.value;
@@ -499,7 +475,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     categoryChips.forEach(chip => {
         chip.addEventListener('click', () => {
             categoryChips.forEach(c => c.classList.remove('active'));
@@ -508,7 +483,6 @@ document.addEventListener('DOMContentLoaded', () => {
             displayRecipes();
         });
     });
-
 
     function updateNavbarAuth() {
         let rawUser = localStorage.getItem('recipeLoggedInUser');
@@ -544,8 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const parent = loginBtn.parentElement;
             loginBtn.remove();
-            
-            // Check if already created
+
             if (!document.getElementById('userProfileNav')) {
                 const userBox = document.createElement('div');
                 userBox.id = 'userProfileNav';
@@ -570,7 +543,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
 
     initSearchModal();
     ensureRecipeModal();

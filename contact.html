@@ -5,20 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Digital Recipe Book</title>
     <meta name="description" content="Get in touch with the Digital Recipe Book team. Send us your feedback, recipe inquiries, or questions.">
-    
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
 
-    
     <style>
         :root {
             --primary-green: #257838;
@@ -37,7 +33,6 @@
         .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
         a { text-decoration: none; color: inherit; }
 
-        /* Navigation Bar */
         .navbar { position: sticky; top: 0; background-color: #ffffff; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); padding: 14px 0; }
         .nav-container { display: flex; align-items: center; justify-content: space-between; }
         .brand-logo { display: flex; align-items: center; gap: 12px; }
@@ -49,17 +44,14 @@
         .nav-link.active { color: var(--primary-orange); font-weight: 700; border-bottom: 3px solid var(--primary-orange); }
         .login-btn { background-color: var(--primary-orange); color: white; font-weight: 700; padding: 9px 22px; border-radius: 12px; }
 
-        /* Contact Hero Section */
         .contact-hero { background: linear-gradient(135deg, #fff8eb 0%, #fef0d2 50%, #fde7b7 100%); padding: 60px 0 50px; text-align: center; }
         .contact-hero-title { font-family: var(--font-heading); font-size: 3rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; }
         .contact-hero-title span { color: var(--primary-green); }
         .contact-hero-sub { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-        /* Contact Main Section */
         .contact-main-section { padding: 60px 0 80px; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 40px; }
 
-        /* Left Info Card */
         .contact-info-card { background: var(--primary-green); color: white; padding: 44px 36px; border-radius: 24px; box-shadow: 0 15px 35px rgba(37, 120, 56, 0.2); display: flex; flex-direction: column; justify-content: space-between; }
         .info-card-header h2 { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
         .info-card-header p { font-size: 1rem; opacity: 0.9; margin-bottom: 36px; line-height: 1.5; }
@@ -74,7 +66,6 @@
         .social-btn-circle { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; transition: all 0.2s; }
         .social-btn-circle:hover { background: white; color: var(--primary-green); transform: translateY(-2px); }
 
-        /* Right Form Card */
         .contact-form-card { background: #ffffff; padding: 44px 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; }
         .contact-form-card h3 { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; color: var(--text-dark); }
         .contact-form-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 0.95rem; }
@@ -88,11 +79,9 @@
         .btn-submit-green { width: 100%; background: #00a843; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 15px rgba(0, 168, 67, 0.25); transition: all 0.2s; }
         .btn-submit-green:hover { background: #008f39; transform: translateY(-2px); }
 
-        /* Success Alert */
         .alert-box { display: none; padding: 14px 18px; border-radius: 12px; font-size: 0.95rem; margin-bottom: 20px; background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; font-weight: 600; }
         .alert-box.show { display: flex; align-items: center; gap: 10px; }
 
-        /* Footer */
         .footer { background-color: #1a4d25; color: white; padding: 20px 0; }
         .footer-flex { display: flex; align-items: center; justify-content: space-between; }
         .social-icons { display: flex; gap: 16px; font-size: 1.1rem; }
@@ -105,7 +94,6 @@
 </head>
 <body>
 
-    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo">
@@ -132,7 +120,6 @@
         </div>
     </header>
 
-    
     <section class="contact-hero">
         <div class="container">
             <h1 class="contact-hero-title">Get in <span>Touch</span></h1>
@@ -140,12 +127,10 @@
         </div>
     </section>
 
-    
     <main class="contact-main-section">
         <div class="container">
             <div class="contact-grid">
-                
-                
+
                 <div class="contact-info-card">
                     <div>
                         <div class="info-card-header">
@@ -191,7 +176,6 @@
                     </div>
                 </div>
 
-                
                 <div class="contact-form-card">
                     <h3>Send a Message</h3>
                     <p>Have a recipe suggestion or inquiry? Drop us a note below.</p>
@@ -234,7 +218,6 @@
         </div>
     </main>
 
-    
     <footer class="footer">
         <div class="container footer-flex">
             <div>&copy; 2026 Digital Recipe Book. All rights reserved.</div>
@@ -246,15 +229,13 @@
         </div>
     </footer>
 
-    
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('submitBtn');
             const successAlert = document.getElementById('successAlert');
-            
-            // Show sending state
+
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
@@ -263,8 +244,7 @@
                 document.getElementById('contactForm').reset();
                 submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
                 submitBtn.disabled = false;
-                
-                // Auto hide after 6 seconds
+
                 setTimeout(() => {
                     successAlert.classList.remove('show');
                 }, 6000);

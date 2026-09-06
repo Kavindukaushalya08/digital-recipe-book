@@ -1,6 +1,5 @@
 
 
-
 :root {
     --primary-green: #257838;
     --primary-green-hover: #1e622d;
@@ -23,7 +22,6 @@
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 }
-
 
 * {
     margin: 0;
@@ -63,14 +61,12 @@ button {
     transition: var(--transition);
 }
 
-
 .text-green { color: var(--primary-green); }
 .text-orange { color: var(--primary-orange); }
 .text-green-bold { color: var(--primary-green); font-weight: 800; }
 .text-orange-bold { color: var(--primary-orange); font-weight: 800; }
 .highlight-green { color: var(--primary-green); font-weight: 800; }
 .highlight-orange { color: var(--primary-orange); font-weight: 800; }
-
 
 .navbar {
     position: sticky;
@@ -204,7 +200,6 @@ button {
     color: var(--text-dark);
 }
 
-
 .hero-section {
     position: relative;
     background: var(--bg-hero);
@@ -258,7 +253,6 @@ button {
     font-weight: 500;
 }
 
-
 .hero-search-box {
     position: relative;
     display: flex;
@@ -303,7 +297,6 @@ button {
     transform: scale(1.05);
 }
 
-
 .hero-cta-group {
     display: flex;
     align-items: center;
@@ -346,7 +339,6 @@ button {
     transform: translateY(-2px);
 }
 
-
 .hero-image-wrapper {
     position: relative;
     display: flex;
@@ -374,7 +366,6 @@ button {
     object-fit: cover;
     display: block;
 }
-
 
 .popular-recipes-section {
     padding: 70px 0;
@@ -435,7 +426,6 @@ button {
     color: white;
 }
 
-
 .recipes-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -459,7 +449,6 @@ button {
         grid-template-columns: 1fr;
     }
 }
-
 
 .recipe-card {
     background-color: #ffffff;
@@ -544,7 +533,6 @@ button {
     font-weight: 500;
 }
 
-
 .login-page-body {
     background-color: #d1d5db;
     min-height: 100vh;
@@ -573,7 +561,6 @@ button {
     overflow: hidden;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
 }
-
 
 .login-form-card {
     background-color: #f8fafc;
@@ -783,7 +770,6 @@ button {
     text-decoration: underline;
 }
 
-
 .login-hero-card {
     position: relative;
     overflow: hidden;
@@ -850,7 +836,6 @@ button {
     opacity: 0.95;
     font-weight: 500;
 }
-
 
 .footer-light {
     background-color: #f1f5f9;
@@ -925,7 +910,6 @@ button {
         text-align: center;
     }
 }
-
 
 .modal-overlay {
     position: fixed;
@@ -1160,7 +1144,6 @@ button {
     color: #475569;
 }
 
-
 .recipe-detail-modal {
     background: #ffffff;
     border-radius: 24px;
@@ -1196,9 +1179,6 @@ button {
     object-fit: cover;
 }
 
-/* ==========================================================================
-   About / Community Section
-   ========================================================================== */
 .about-section {
     background-color: #ffffff;
     padding: 60px 0 70px;
@@ -1253,9 +1233,6 @@ button {
     color: #8a96a8;
 }
 
-/* ==========================================================================
-   Footer Styles
-   ========================================================================== */
 .footer {
     background-color: #257838 !important;
     color: #ffffff !important;

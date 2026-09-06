@@ -1,6 +1,5 @@
 <?php
 
-
 $host = 'localhost';
 $dbname = 'recipe_db';
 $username = 'root';
@@ -18,5 +17,4 @@ try {
     die("Database Connection Error: " . $e->getMessage());
 }
 ?>
-
 
