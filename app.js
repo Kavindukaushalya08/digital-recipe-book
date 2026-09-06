@@ -277,14 +277,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Open Search Modal
-        function openSearchModal() {
+        function openSearchModal(initialQuery = '') {
             searchOverlay.style.display = 'flex';
             searchOverlay.classList.add('active');
+            if (modalInput) {
+                modalInput.value = initialQuery;
+            }
             renderSearchResults();
             setTimeout(() => {
                 if (modalInput) {
-                    modalInput.value = '';
                     modalInput.focus();
+                    if (initialQuery) {
+                        modalInput.setSelectionRange(initialQuery.length, initialQuery.length);
+                    }
                 }
             }, 100);
         }
@@ -319,14 +324,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Attach click listeners to all search trigger buttons in navbar
-        const searchTriggers = document.querySelectorAll('.search-trigger-btn, #searchTriggerBtn, .navbar-search-btn');
+        // Attach click listeners to all search trigger buttons (Navbar, Hero, and Catalog)
+        const searchTriggers = document.querySelectorAll('.search-trigger-btn, #searchTriggerBtn, #heroSearchBtn, .navbar-search-btn');
         searchTriggers.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                openSearchModal();
+                const heroIn = document.getElementById('heroSearchInput');
+                const initialVal = (heroIn && btn.id === 'heroSearchBtn') ? heroIn.value.trim() : '';
+                openSearchModal(initialVal);
             });
         });
+
+        // Click or Enter key on Hero Search Input opens the Search Engine Modal immediately
+        const heroInputElem = document.getElementById('heroSearchInput');
+        if (heroInputElem) {
+            heroInputElem.addEventListener('click', () => {
+                openSearchModal(heroInputElem.value.trim());
+            });
+            heroInputElem.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    openSearchModal(heroInputElem.value.trim());
+                }
+            });
+        }
 
         // Keyboard Shortcut: Press Escape to close, Ctrl+K or / to open
         document.addEventListener('keydown', (e) => {
