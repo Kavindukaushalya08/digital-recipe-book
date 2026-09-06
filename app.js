@@ -493,10 +493,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // STEP 6: Update Navbar with Logged-in User Profile
     function updateNavbarAuth() {
-        const loggedInUser = localStorage.getItem('recipeLoggedInUser');
+        let rawUser = localStorage.getItem('recipeLoggedInUser');
         const loginBtn = document.getElementById('loginBtn');
         
-        if (loggedInUser && loginBtn) {
+        if (rawUser && loginBtn) {
+            let displayName = rawUser;
+
+            // 1. Check if registered user object has a clean username
+            try {
+                const reg = JSON.parse(localStorage.getItem('registeredRecipeUser') || '{}');
+                if (reg && reg.username && reg.username.trim() !== '') {
+                    displayName = reg.username.trim();
+                }
+            } catch(e) {}
+
+            // 2. If it is an email address, strip the domain
+            if (displayName.includes('@')) {
+                displayName = displayName.split('@')[0];
+            }
+
+            // 3. If the name is like kavindukaushalya0131, clean trailing digits if no custom username was given
+            if (/^[a-zA-Z]+[0-9]+$/.test(displayName)) {
+                const alphaOnly = displayName.replace(/[0-9]+$/, '');
+                if (alphaOnly.length >= 3) {
+                    displayName = alphaOnly;
+                }
+            }
+
+            // 4. Capitalize first letter
+            if (displayName.length > 0) {
+                displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+            }
+
             const parent = loginBtn.parentElement;
             loginBtn.remove();
             
@@ -508,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
             userBox.innerHTML = `
                 <a href="dashboard.php" style="background:#00a843; color:white; padding:8px 16px; border-radius:10px; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
                     <i class="fa-solid fa-circle-user"></i>
-                    <span>${loggedInUser}</span>
+                    <span>${displayName}</span>
                 </a>
                 <button id="customLogoutBtn" style="background:#ef4444; color:white; border:none; padding:8px 14px; border-radius:10px; font-weight:700; cursor:pointer;" title="Logout">
                     <i class="fa-solid fa-power-off"></i>
