@@ -237,6 +237,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // STEP 6: Update Navbar with Logged-in User Profile
+    function updateNavbarAuth() {
+        const loggedInUser = localStorage.getItem('recipeLoggedInUser');
+        const loginBtn = document.getElementById('loginBtn');
+        
+        if (loggedInUser && loginBtn) {
+            const parent = loginBtn.parentElement;
+            loginBtn.remove();
+            
+            const userBox = document.createElement('div');
+            userBox.id = 'userProfileNav';
+            userBox.style.display = 'flex';
+            userBox.style.alignItems = 'center';
+            userBox.style.gap = '10px';
+            userBox.innerHTML = `
+                <a href="dashboard.php" style="background:#00a843; color:white; padding:8px 16px; border-radius:10px; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>${loggedInUser}</span>
+                </a>
+                <button id="customLogoutBtn" style="background:#ef4444; color:white; border:none; padding:8px 14px; border-radius:10px; font-weight:700; cursor:pointer;" title="Logout">
+                    <i class="fa-solid fa-power-off"></i>
+                </button>
+            `;
+            parent.appendChild(userBox);
+
+            document.getElementById('customLogoutBtn').addEventListener('click', () => {
+                localStorage.removeItem('recipeLoggedInUser');
+                window.location.reload();
+            });
+        }
+    }
+
+    updateNavbarAuth();
+
     // Initialize & Display Recipes on Page Load
     displayRecipes();
 });
