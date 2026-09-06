@@ -1,5 +1,5 @@
 # RAJARATA UNIVERSITY OF SRI LANKA
-## Department of ICT – Faculty of Applied Sciences
+## Department of ICT – Faculty of Technology
 ### ICT 1209: Web Technologies – Mini Project Final Report
 
 ---
