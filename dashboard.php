@@ -40,12 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $userRecipesStmt = $pdo->prepare("SELECT * FROM recipes WHERE user_id = ? ORDER BY id DESC");
 $userRecipesStmt->execute([$user['id']]);
 $myRecipes = $userRecipesStmt->fetchAll();
+$base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>User Dashboard - Digital Recipe Book</title>
+    <base href="<?php echo htmlspecialchars($base_path, ENT_QUOTES, 'UTF-8'); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">

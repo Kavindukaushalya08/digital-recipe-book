@@ -4,8 +4,18 @@
    Dynamic PHP & MySQL Database Integration
    ========================================================================== */
 
+// Auto-correct trailing slash if user enters index.php/
+if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] !== '') {
+    $clean_url = str_replace($_SERVER['PATH_INFO'], '', $_SERVER['REQUEST_URI']);
+    header("Location: " . $clean_url);
+    exit;
+}
+
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
+
+// Base URL calculation for robust CSS/JS/Image loading
+$base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 
 // Fetch popular recipes from MySQL database
 $recipes = [];
@@ -23,6 +33,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Recipe Book - Discover, Cook & Share Recipes</title>
+    <base href="<?php echo htmlspecialchars($base_path, ENT_QUOTES, 'UTF-8'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
