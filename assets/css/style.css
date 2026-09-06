@@ -1184,3 +1184,101 @@ button {
     object-fit: cover;
 }
 
+/* ==========================================================================
+   About / Community Section
+   ========================================================================== */
+.about-section {
+    background-color: #ffffff;
+    padding: 60px 0 70px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.about-container {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.about-container h2 {
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e252b;
+    margin-bottom: 12px;
+}
+
+.about-container p {
+    font-size: 1rem;
+    color: #5a6578;
+    line-height: 1.6;
+    max-width: 720px;
+    margin-bottom: 28px;
+}
+
+.stats-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.stat-num {
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #257838;
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #8a96a8;
+}
+
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+.footer {
+    background-color: #257838 !important;
+    color: #ffffff !important;
+    padding: 24px 0 !important;
+    width: 100% !important;
+}
+
+.footer .container, .footer-container, .footer-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.footer div, .copyright-text {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.social-icons, .social-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-icons a, .social-links a {
+    color: #ffffff !important;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover, .social-links a:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
