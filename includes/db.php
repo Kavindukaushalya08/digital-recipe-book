@@ -2,7 +2,7 @@
 
 
 $host = 'localhost';
-$dbname = 'recipe_book';
+$dbname = 'recipe_db';
 $username = 'root';
 $password = ''; 
 

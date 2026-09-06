@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 require_once 'includes/db.php';
 
@@ -164,7 +164,7 @@ $jsonRecipes = json_encode($catalogRecipes);
 
             <nav class="nav-links">
                 <a href="index.php" class="nav-link">Home</a>
-                <a href="recipes.php" class="nav-link active">Recipes</a>
+                <a href="recipes.html" class="nav-link active">Recipes</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
@@ -233,13 +233,13 @@ $jsonRecipes = json_encode($catalogRecipes);
             <aside class="sidebar-categories-box">
                 <div class="sidebar-header">Categories</div>
                 <ul class="sidebar-menu">
-                    <li class="sidebar-item active" data-cat="all"><span>Ã°Å¸Å½Â¨</span> All Categories</li>
-                    <li class="sidebar-item" data-cat="Breakfast"><span>Ã°Å¸Â¥Â</span> Breakfast</li>
-                    <li class="sidebar-item" data-cat="Lunch"><span>Ã°Å¸ÂÂ±</span> Lunch</li>
-                    <li class="sidebar-item" data-cat="Dinner"><span>Ã°Å¸ÂÂ²</span> Dinner</li>
-                    <li class="sidebar-item" data-cat="Dessert"><span>Ã°Å¸ÂÂ°</span> Dessert</li>
-                    <li class="sidebar-item" data-cat="Drinks"><span>Ã°Å¸ÂÂ¹</span> Drinks</li>
-                    <li class="sidebar-item" data-cat="Snacks"><span>Ã°Å¸Â¥â€”</span> Snacks</li>
+                    <li class="sidebar-item active" data-cat="all"><span>🎨</span> All Categories</li>
+                    <li class="sidebar-item" data-cat="Breakfast"><span>🥐</span> Breakfast</li>
+                    <li class="sidebar-item" data-cat="Lunch"><span>🍱</span> Lunch</li>
+                    <li class="sidebar-item" data-cat="Dinner"><span>🍲</span> Dinner</li>
+                    <li class="sidebar-item" data-cat="Dessert"><span>🍰</span> Dessert</li>
+                    <li class="sidebar-item" data-cat="Drinks"><span>🍹</span> Drinks</li>
+                    <li class="sidebar-item" data-cat="Snacks"><span>🥗</span> Snacks</li>
                 </ul>
             </aside>
 
@@ -270,7 +270,7 @@ $jsonRecipes = json_encode($catalogRecipes);
     
     <script>
         // STEP 1: Simple Dataset for the 8 Recipes shown in reference screenshot
-        const catalogRecipes = $jsonRecipes;
+        const catalogRecipes = <?= $jsonRecipes ?>;
 
         let selectedCategory = 'all';
         let searchQuery = '';
@@ -301,7 +301,7 @@ $jsonRecipes = json_encode($catalogRecipes);
                     <div class="card-content-row">
                         <div class="card-recipe-title">${item.title}</div>
                         <div class="card-meta-line">
-                            <span>${item.time} &nbsp;|&nbsp; Ã¢Â­Â ${item.rating}</span>
+                            <span>${item.time} &nbsp;|&nbsp; ⭐ ${item.rating}</span>
                             <i class="fa-regular fa-heart fav-heart-icon" onclick="toggleHeart(this)"></i>
                         </div>
                     </div>
