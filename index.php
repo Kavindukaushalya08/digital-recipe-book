@@ -131,17 +131,10 @@ try {
                         <i class="fa-solid fa-border-all"></i>
                         <span>Browse Recipes</span>
                     </a>
-                    <?php if (is_logged_in()): ?>
-                        <a href="dashboard.php" class="btn btn-outline" id="addRecipeBtn">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>Add Your Recipe</span>
-                        </a>
-                    <?php else: ?>
-                        <a href="auth/login.php" class="btn btn-outline" id="addRecipeBtn">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>Add Your Recipe</span>
-                        </a>
-                    <?php endif; ?>
+                    <a href="add-recipe.html" class="btn btn-outline" id="addRecipeBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Add Your Recipe</span>
+                    </a>
                 </div>
             </div>
 

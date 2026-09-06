@@ -5,47 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Your Recipe - Digital Recipe Book</title>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
-</head>
-<body class="add-recipe-page-body">
 
+    <style>
+        :root {
+            --primary-green: #257838;
+            --primary-green-hover: #1e622d;
+            --primary-orange: #ee5d20;
+            --text-dark: #1e252b;
+            --text-muted: #64748b;
+            --bg-page: #f8fafc;
+            --card-bg: #ffffff;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background-color: var(--bg-page); color: var(--text-dark); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Navigation Bar */
+        .navbar { position: sticky; top: 0; background-color: #ffffff; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.06); padding: 14px 0; }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; }
+        .brand-logo { display: flex; align-items: center; gap: 12px; }
+        .logo-text { display: flex; flex-direction: column; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; line-height: 1.1; }
+        .text-green { color: var(--primary-green); }
+        .text-orange { color: var(--primary-orange); }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
+        .nav-link { font-weight: 600; font-size: 0.95rem; color: var(--text-muted); padding: 6px 0; }
+        .nav-link:hover { color: var(--primary-orange); }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        .search-trigger-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-dark); padding: 6px; }
+        .login-btn { background-color: var(--primary-orange); color: white; font-weight: 700; padding: 9px 22px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; }
+
+        /* Page Hero */
+        .form-page-header { text-align: center; padding: 40px 0 20px; }
+        .form-page-title { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; color: #1e252b; margin-bottom: 8px; }
+        .form-page-sub { color: var(--text-muted); font-size: 1rem; }
+
+        /* Form Container Card */
+        .recipe-form-card { background: var(--card-bg); border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; margin-bottom: 60px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.9rem; color: #1e252b; margin-bottom: 8px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: #1e252b;
+            background: #ffffff;
+            transition: all 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(37, 120, 56, 0.15);
+        }
+
+        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        /* Upload Box */
+        .upload-drop-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        .upload-drop-zone:hover { border-color: var(--primary-green); background: #f0fdf4; }
+        .upload-drop-zone i { font-size: 2.2rem; color: var(--primary-green); margin-bottom: 10px; }
+        .upload-drop-zone p { font-size: 0.9rem; color: var(--text-muted); }
+        .preview-img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; display: none; }
+
+        /* Form Actions */
+        .form-actions-row { display: flex; align-items: center; justify-content: flex-end; gap: 14px; margin-top: 10px; }
+        .btn-cancel { padding: 12px 24px; border-radius: 12px; font-weight: 700; color: #64748b; background: #f1f5f9; border: none; cursor: pointer; }
+        .btn-cancel:hover { background: #e2e8f0; }
+        .btn-submit-recipe { padding: 12px 28px; border-radius: 12px; font-weight: 700; color: #ffffff; background: var(--primary-green); border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; transition: all 0.2s; }
+        .btn-submit-recipe:hover { background: var(--primary-green-hover); transform: translateY(-2px); }
+
+        /* Success Alert */
+        .success-banner { background: #dcfce7; border: 1px solid #bbf7d0; color: #166534; padding: 16px; border-radius: 12px; margin-bottom: 24px; display: none; text-align: center; font-weight: 700; }
+
+        /* Footer */
+        .footer { background-color: var(--primary-green); color: white; padding: 20px 0; }
+        .footer-container { display: flex; align-items: center; justify-content: space-between; }
+        .social-links { display: flex; gap: 16px; }
+
+        @media(max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; gap: 20px; }
+            .recipe-form-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAVIGATION -->
     <header class="navbar">
         <div class="container nav-container">
-            <!-- Logo -->
             <a href="index.html" class="brand-logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 40 40" fill="none" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 5C14.4772 5 10 9.47715 10 15C10 17.5 10.9 19.8 12.4 21.5C9.5 22.8 7.5 25.6 7.5 29H32.5C32.5 25.6 30.5 22.8 27.6 21.5C29.1 19.8 30 17.5 30 15C30 9.47715 25.5228 5 20 5Z" fill="#257838"/>
-                        <path d="M8 29H32V32C32 33.6569 30.6569 35 29 35H11C9.34315 35 8 33.6569 8 32V29Z" fill="#EE5D20"/>
-                        <path d="M14 15C14 11.6863 16.6863 9 20 9C23.3137 9 26 11.6863 26 15" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-                        <circle cx="20" cy="20" r="2" fill="white"/>
-                    </svg>
-                </div>
+                <svg viewBox="0 0 40 40" fill="none" width="38" height="38">
+                    <path d="M20 5C14.4772 5 10 9.47715 10 15C10 17.5 10.9 19.8 12.4 21.5C9.5 22.8 7.5 25.6 7.5 29H32.5C32.5 25.6 30.5 22.8 27.6 21.5C29.1 19.8 30 17.5 30 15C30 9.47715 25.5228 5 20 5Z" fill="#257838"/>
+                    <path d="M8 29H32V32C32 33.6569 30.6569 35 29 35H11C9.34315 35 8 33.6569 8 32V29Z" fill="#EE5D20"/>
+                </svg>
                 <div class="logo-text">
                     <span class="text-green">Digital</span>
                     <span class="text-orange">Recipe Book</span>
                 </div>
             </a>
 
-            <!-- Navigation Links -->
-            <nav class="nav-links" id="navLinks">
+            <nav class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="recipes.html" class="nav-link">Recipes</a>
-                <a href="index.html#categories" class="nav-link">Categories</a>
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
-            <!-- User Actions -->
             <div class="nav-actions">
-                <button class="search-trigger-btn" id="searchTriggerBtn" title="Search">
+                <button class="search-trigger-btn" id="searchTriggerBtn" title="Search Recipes (Ctrl+K)">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
                 <a href="login.html" class="login-btn" id="loginBtn">
@@ -56,83 +157,91 @@
         </div>
     </header>
 
-    <div class="banner-strip"></div>
-
-    <section class="add-recipe-section container">
-        <div class="add-recipe-header">
-            <h2><i class="fa-solid fa-hat-chef"></i> Add Your Recipe</h2>
+    <!-- 2. MAIN CONTENT -->
+    <main class="container">
+        <div class="form-page-header">
+            <h1 class="form-page-title">👨‍🍳 Share Your Recipe</h1>
+            <p class="form-page-sub">Fill out the ingredients and preparation steps below to publish your delicious culinary creation.</p>
         </div>
-        
-        <form id="addRecipeForm" class="add-recipe-form">
-            <div class="form-grid">
-                
-                <div class="form-column">
-                    <div class="form-group">
-                        <label for="recipeTitle">Recipe title</label>
-                        <input type="text" id="recipeTitle" placeholder="Enter recipe title" required>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="recipeCategory">Category</label>
-                        <select id="recipeCategory" required>
-                            <option value="">Select Category</option>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Main Course">Main Course</option>
-                            <option value="Italian">Italian</option>
-                            <option value="Dessert">Dessert</option>
-                            <option value="Asian">Asian</option>
-                            <option value="Dinner">Dinner</option>
-                        </select>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="prepTime">Preparation Time</label>
-                            <input type="text" id="prepTime" placeholder="e.g. 30 min" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="servings">Servings</label>
-                            <input type="text" id="servings" placeholder="e.g. 4" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ingredients">Ingredients (one per line)</label>
-                        <textarea id="ingredients" placeholder="Enter ingredients here ............" rows="6" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-column">
-                    <div class="form-group">
-                        <label for="instructions">Instructions (step by step)</label>
-                        <textarea id="instructions" placeholder="Enter step by step instructions............." rows="6" required></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Instructions (Recipe Image)</label>
-                        <div class="file-upload-box" id="fileUploadBox">
-                            <input type="file" id="recipeImage" accept="image/*" hidden>
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                            <p><strong>Click to upload image</strong><br>or drag and drop</p>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-white" onclick="window.history.back()">Cancel</button>
-                        <button type="submit" class="btn btn-purple"><i class="fa-regular fa-paper-plane"></i> Submit Recipe</button>
-                    </div>
-                </div>
+        <div class="recipe-form-card">
+            <div id="successBanner" class="success-banner">
+                <i class="fa-solid fa-circle-check me-2"></i> Your recipe has been published successfully! Redirecting to recipes...
             </div>
-            
-            <div class="floral-decoration"></div>
-        </form>
-    </section>
 
-    <footer class="footer purple-footer" id="contact">
+            <form id="newRecipeForm">
+                <div class="form-grid">
+                    <!-- Left Column -->
+                    <div class="form-col-left">
+                        <div class="form-group">
+                            <label for="title">Recipe Title *</label>
+                            <input type="text" id="title" required placeholder="e.g. Creamy Garlic Alfredo Pasta">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" required>
+                                <option value="">-- Choose Category --</option>
+                                <option value="Breakfast">Breakfast</option>
+                                <option value="Lunch">Lunch</option>
+                                <option value="Dinner">Dinner</option>
+                                <option value="Dessert">Dessert</option>
+                                <option value="Snacks">Snacks</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="prepTime">Prep Time *</label>
+                                <input type="text" id="prepTime" required placeholder="e.g. 25 mins">
+                            </div>
+                            <div class="form-group">
+                                <label for="servings">Servings</label>
+                                <input type="text" id="servings" placeholder="e.g. 4 people">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ingredients">Ingredients (one per line) *</label>
+                            <textarea id="ingredients" rows="5" required placeholder="1 cup All-purpose flour&#10;2 Eggs&#10;1 cup Milk&#10;2 tbsp Butter"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="form-col-right">
+                        <div class="form-group">
+                            <label for="instructions">Cooking Instructions *</label>
+                            <textarea id="instructions" rows="6" required placeholder="Step 1: Whisk eggs and milk in a bowl...&#10;Step 2: Heat skillet over medium heat...&#10;Step 3: Cook until golden brown..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Recipe Photo</label>
+                            <div class="upload-drop-zone" id="dropZone" onclick="document.getElementById('imageFile').click()">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p><strong>Click to browse photo</strong> or drag & drop</p>
+                                <span style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">PNG, JPG, or WEBP up to 5MB</span>
+                                <input type="file" id="imageFile" accept="image/*" style="display: none;">
+                                <img id="previewImage" class="preview-img" alt="Recipe Preview">
+                            </div>
+                        </div>
+
+                        <div class="form-actions-row">
+                            <button type="button" class="btn-cancel" onclick="window.location.href='index.html'">Cancel</button>
+                            <button type="submit" class="btn-submit-recipe">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>Publish Recipe</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- 3. FOOTER -->
+    <footer class="footer">
         <div class="container footer-container">
-            <div class="copyright-text">
-                &copy; 2026 Digital Recipe Book. All rights reserved.
-            </div>
+            <div>&copy; 2026 Digital Recipe Book. Faculty of Technology - RUSL.</div>
             <div class="social-links">
                 <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -142,5 +251,64 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+        // Image preview logic
+        const imageFile = document.getElementById('imageFile');
+        const previewImage = document.getElementById('previewImage');
+        let uploadedDataUrl = 'assets/images/hero_pasta_dish.jpg';
+
+        imageFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    uploadedDataUrl = evt.target.result;
+                    previewImage.src = uploadedDataUrl;
+                    previewImage.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle recipe submission
+        document.getElementById('newRecipeForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('title').value.trim();
+            const category = document.getElementById('category').value;
+            const prepTime = document.getElementById('prepTime').value.trim();
+            const rawIngredients = document.getElementById('ingredients').value.trim();
+            const instructions = document.getElementById('instructions').value.trim();
+
+            const ingredientsList = rawIngredients.split('\n').map(i => i.trim()).filter(i => i.length > 0);
+
+            const newRecipe = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                rating: 5.0,
+                reviews: 1,
+                image: uploadedDataUrl,
+                fallbackImage: 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?q=80&w=800',
+                prepTime: prepTime,
+                ingredients: ingredientsList,
+                instructions: instructions.replace(/\n/g, '<br>')
+            };
+
+            // Save to localStorage
+            let savedList = JSON.parse(localStorage.getItem('customRecipes') || '[]');
+            savedList.unshift(newRecipe);
+            localStorage.setItem('customRecipes', JSON.stringify(savedList));
+
+            // Show success banner
+            const banner = document.getElementById('successBanner');
+            banner.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            setTimeout(() => {
+                window.location.href = 'recipes.html';
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
