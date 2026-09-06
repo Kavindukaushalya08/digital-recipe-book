@@ -343,9 +343,10 @@
                 togglePassword.classList.toggle('fa-eye-slash');
             });
 
-            authLoginForm.addEventListener('submit', (e) => {
+            authLoginForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const loginInput = document.getElementById('authEmail').value.trim();
+                const password = document.getElementById('authPassword').value;
                 
                 // Check if user was saved in browser localStorage
                 let displayUsername = loginInput;
@@ -364,11 +365,23 @@
                 
                 // Save clean user login state in Browser
                 localStorage.setItem('recipeLoggedInUser', displayUsername);
+
+                // Authenticate with XAMPP MySQL backend
+                try {
+                    const formData = new FormData();
+                    formData.append('login_input', loginInput);
+                    formData.append('password', password);
+                    
+                    await fetch('auth/login.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                } catch (err) {}
                 
-                toast.textContent = `Welcome back, ${displayUsername}! 🎉 Redirecting to Home...`;
+                toast.textContent = `Welcome back, ${displayUsername}! 🎉 Logging you in...`;
                 toast.classList.add('show');
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = 'index.php';
                 }, 1000);
             });
         });

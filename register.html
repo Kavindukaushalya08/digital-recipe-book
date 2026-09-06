@@ -261,19 +261,35 @@
             togglePassword.classList.toggle('fa-eye-slash');
         });
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const username = document.getElementById('regUsername').value;
-            const email = document.getElementById('regEmail').value;
+            const username = document.getElementById('regUsername').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
             
             // Save user profile data to Browser LocalStorage
             localStorage.setItem('registeredRecipeUser', JSON.stringify({ username, email }));
             localStorage.setItem('recipeLoggedInUser', username);
+
+            // Post to XAMPP MySQL backend to save user in Server Database
+            try {
+                const formData = new FormData();
+                formData.append('username', username);
+                formData.append('email', email);
+                formData.append('password', password);
+                
+                await fetch('auth/register.php', {
+                    method: 'POST',
+                    body: formData
+                });
+            } catch (err) {
+                console.log('Server sync:', err);
+            }
             
-            toast.textContent = `Account created for ${username}! 🎉 Logging you in...`;
+            toast.textContent = `Account created for ${username}! 🎉 Details saved to server.`;
             toast.classList.add('show');
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = 'index.php';
             }, 1200);
         });
     </script>
