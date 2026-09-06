@@ -1,16 +1,13 @@
 <?php
-/* ==========================================================================
-   USER LOGIN PAGE (auth/login.php)
-   Simple PHP Code for Viva Examination Preparation
-   ========================================================================== */
 
-// 1. Include Database Connection and Functions
+
+
 require_once '../includes/db.php';
 require_once '../includes/functions.php';
 
 $error = '';
 
-// 2. Check if Form is Submitted via POST method
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $loginInput = trim($_POST['username']);
@@ -19,22 +16,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($loginInput) || empty($password)) {
         $error = "Please enter both Username/Email and Password!";
     } else {
-        // Query database for user matching username or email
+
         $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
         $stmt->execute([$loginInput, $loginInput]);
         $user = $stmt->fetch();
 
-        // Verify user exists and password hash matches
+
         if ($user && password_verify($password, $user['password'])) {
             
-            // Start session and save user info
+
             $_SESSION['user_id']  = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email']    = $user['email'];
             
-            session_regenerate_id(true); // Security measure required by PDF guide
+            session_regenerate_id(true); 
 
-            // Redirect to Dashboard or Home
+
             header("Location: ../dashboard.php");
             exit();
         } else {

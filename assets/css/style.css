@@ -1,8 +1,6 @@
-/* ==========================================================================
-   Digital Recipe Book - Master Stylesheet
-   ========================================================================== */
 
-/* Design Tokens & CSS Variables */
+
+
 :root {
     --primary-green: #257838;
     --primary-green-hover: #1e622d;
@@ -26,7 +24,7 @@
     --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Reset & Global Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -65,7 +63,7 @@ button {
     transition: var(--transition);
 }
 
-/* Utility Color Classes */
+
 .text-green { color: var(--primary-green); }
 .text-orange { color: var(--primary-orange); }
 .text-green-bold { color: var(--primary-green); font-weight: 800; }
@@ -73,9 +71,7 @@ button {
 .highlight-green { color: var(--primary-green); font-weight: 800; }
 .highlight-orange { color: var(--primary-orange); font-weight: 800; }
 
-/* ==========================================================================
-   Navbar
-   ========================================================================== */
+
 .navbar {
     position: sticky;
     top: 0;
@@ -208,9 +204,7 @@ button {
     color: var(--text-dark);
 }
 
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
+
 .hero-section {
     position: relative;
     background: var(--bg-hero);
@@ -264,7 +258,7 @@ button {
     font-weight: 500;
 }
 
-/* Search Box Capsule */
+
 .hero-search-box {
     position: relative;
     display: flex;
@@ -309,7 +303,7 @@ button {
     transform: scale(1.05);
 }
 
-/* Hero CTA Buttons */
+
 .hero-cta-group {
     display: flex;
     align-items: center;
@@ -352,7 +346,7 @@ button {
     transform: translateY(-2px);
 }
 
-/* Hero Image Card */
+
 .hero-image-wrapper {
     position: relative;
     display: flex;
@@ -381,9 +375,7 @@ button {
     display: block;
 }
 
-/* ==========================================================================
-   Popular Recipes Section
-   ========================================================================== */
+
 .popular-recipes-section {
     padding: 70px 0;
     background-color: #ffffff;
@@ -437,7 +429,7 @@ button {
     color: white;
 }
 
-/* Recipes Grid Layout */
+
 .recipes-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -462,7 +454,7 @@ button {
     }
 }
 
-/* Recipe Card Styling */
+
 .recipe-card {
     background-color: #ffffff;
     border-radius: var(--radius-md);
@@ -546,9 +538,7 @@ button {
     font-weight: 500;
 }
 
-/* ==========================================================================
-   Dedicated Login Page Styles (Exact Screenshot Fidelity)
-   ========================================================================== */
+
 .login-page-body {
     background-color: #d1d5db;
     min-height: 100vh;
@@ -578,7 +568,7 @@ button {
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
 }
 
-/* Left Form Card */
+
 .login-form-card {
     background-color: #f8fafc;
     padding: 44px;
@@ -787,7 +777,7 @@ button {
     text-decoration: underline;
 }
 
-/* Right Hero Card */
+
 .login-hero-card {
     position: relative;
     overflow: hidden;
@@ -855,7 +845,7 @@ button {
     font-weight: 500;
 }
 
-/* Footer Light */
+
 .footer-light {
     background-color: #f1f5f9;
     border-top: 1px solid #e2e8f0;
@@ -930,9 +920,7 @@ button {
     }
 }
 
-/* ==========================================================================
-   Search Modal & Recipe Detail Popup
-   ========================================================================== */
+
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -1160,7 +1148,7 @@ button {
     color: #475569;
 }
 
-/* Recipe Detail Modal */
+
 .recipe-detail-modal {
     background: #ffffff;
     border-radius: 24px;

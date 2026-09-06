@@ -1,39 +1,36 @@
 <?php
-/* ==========================================================================
-   USER REGISTRATION PAGE (auth/register.php)
-   Simple PHP Code for Viva Examination Preparation
-   ========================================================================== */
 
-// 1. Include Database Connection
+
+
 require_once '../includes/db.php';
 require_once '../includes/functions.php';
 
 $message = '';
 $error = '';
 
-// 2. Check if Form is Submitted via POST method
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Get input values from form
+
     $username = trim($_POST['username']);
     $email    = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    // Basic Validation
+
     if (empty($username) || empty($email) || empty($password)) {
         $error = "Please fill in all required fields!";
     } else {
-        // Check if email already exists in database
+
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? OR username = ?");
         $stmt->execute([$email, $username]);
 
         if ($stmt->rowCount() > 0) {
             $error = "Username or Email already registered!";
         } else {
-            // Hash the password for security using BCRYPT
+
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            // Insert new user into MySQL database
+
             $insertStmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
             if ($insertStmt->execute([$username, $email, $hashedPassword])) {
                 $message = "Registration successful! You can now <a href='login.php'>Login here</a>.";

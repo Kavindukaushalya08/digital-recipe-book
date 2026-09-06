@@ -1,16 +1,13 @@
 <?php
-/* ==========================================================================
-   USER LOGOUT (auth/logout.php)
-   Simple PHP Code for Viva Examination Preparation
-   ========================================================================== */
 
-// 1. Start session
+
+
 session_start();
 
-// 2. Unset all session variables
+
 $_SESSION = array();
 
-// 3. Destroy the session cookie if exists
+
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -19,10 +16,10 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// 4. Destroy the session completely
+
 session_destroy();
 
-// 5. Redirect to Home page or Login page
+
 header("Location: ../index.php");
 exit();
 ?>

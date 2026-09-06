@@ -1,9 +1,6 @@
-/* ==========================================================================
-   DIGITAL RECIPE BOOK - JAVASCRIPT LOGIC
-   (Designed for easy understanding during Viva examinations)
-   ========================================================================== */
 
-// STEP 1: Store all recipe data in an Array of Objects (8 Comprehensive Recipes)
+
+
 const recipesData = [
     {
         id: 1,
@@ -159,10 +156,10 @@ const recipesData = [
     }
 ];
 
-// STEP 2: Wait for DOM Content to load before attaching events
+
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Select HTML elements by their IDs
+
     const recipesGrid = document.getElementById('recipesGrid');
     const heroSearchInput = document.getElementById('heroSearchInput');
     const heroSearchBtn = document.getElementById('heroSearchBtn');
@@ -176,18 +173,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCategory = 'all';
     let currentSearchTerm = '';
 
-    // =========================================================================
-    // SEARCH POPUP MODAL ENGINE (Navbar Search Icon Trigger)
-    // =========================================================================
+
+
+
     function initSearchModal() {
         let searchOverlay = document.getElementById('searchModalOverlay');
         
-        // Inject Search Modal if not already present in DOM
+
         if (!searchOverlay) {
             searchOverlay = document.createElement('div');
             searchOverlay.id = 'searchModalOverlay';
             searchOverlay.className = 'modal-overlay';
-            searchOverlay.style.display = 'none'; // Hidden by default
+            searchOverlay.style.display = 'none'; 
             searchOverlay.innerHTML = `
                 <div class="search-modal-container">
                     <div class="search-modal-header">
@@ -222,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const categoryBtns = searchOverlay.querySelectorAll('.search-tag-chip');
         let activeModalCat = 'all';
 
-        // Function to render search results inside popup
+
         function renderSearchResults() {
             const query = (modalInput ? modalInput.value : '').trim().toLowerCase();
             
@@ -263,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `).join('');
 
-            // Click listener on each search item
+
             resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const id = parseInt(item.getAttribute('data-recipe-id'), 10);
@@ -276,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Open Search Modal
+
         function openSearchModal(initialQuery = '') {
             searchOverlay.style.display = 'flex';
             searchOverlay.classList.add('active');
@@ -294,13 +291,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
 
-        // Close Search Modal
+
         function closeSearchModal() {
             searchOverlay.classList.remove('active');
             searchOverlay.style.display = 'none';
         }
 
-        // Event listeners inside search modal
+
         if (modalInput) {
             modalInput.addEventListener('input', renderSearchResults);
         }
@@ -324,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Attach click listeners to all search trigger buttons (Navbar, Hero, and Catalog)
+
         const searchTriggers = document.querySelectorAll('.search-trigger-btn, #searchTriggerBtn, #heroSearchBtn, .navbar-search-btn');
         searchTriggers.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -335,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Click or Enter key on Hero Search Input opens the Search Engine Modal immediately
+
         const heroInputElem = document.getElementById('heroSearchInput');
         if (heroInputElem) {
             heroInputElem.addEventListener('click', () => {
@@ -349,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Keyboard Shortcut: Press Escape to close, Ctrl+K or / to open
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeSearchModal();
@@ -365,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Ensure Recipe Modal exists in DOM
+
     function ensureRecipeModal() {
         if (!recipeModal) {
             recipeModal = document.createElement('div');
@@ -397,14 +394,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // STEP 3: Function to display recipe cards dynamically in the HTML grid
+
     function displayRecipes() {
         if (!recipesGrid) return;
         
-        // Clear previous grid contents
+
         recipesGrid.innerHTML = '';
 
-        // Filter recipes based on category and search query
+
         const filteredList = recipesData.filter(recipe => {
             const matchesCategory = (currentCategory === 'all') || (recipe.category.toLowerCase() === currentCategory.toLowerCase());
             const matchesSearch = !currentSearchTerm || 
@@ -413,13 +410,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return matchesCategory && matchesSearch;
         });
 
-        // If no matching recipe found
+
         if (filteredList.length === 0) {
             recipesGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #777; padding: 40px;">No recipes match your search.</p>`;
             return;
         }
 
-        // Loop through filtered list and create HTML card elements
+
         filteredList.forEach(recipe => {
             const cardElement = document.createElement('div');
             cardElement.className = 'recipe-card';
@@ -441,13 +438,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Open detail modal when clicking a card
+
             cardElement.addEventListener('click', () => openRecipeModal(recipe));
             recipesGrid.appendChild(cardElement);
         });
     }
 
-    // STEP 4: Function to open detailed Recipe Modal Popup
+
     function openRecipeModal(recipe) {
         ensureRecipeModal();
         if (!recipeDetailBody) return;
@@ -478,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
         recipeModal.classList.add('active');
     }
 
-    // STEP 5: Event Listeners for Hero Search & Category Filters
+
     if (heroSearchInput) {
         heroSearchInput.addEventListener('input', (e) => {
             currentSearchTerm = e.target.value;
@@ -502,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Filter Buttons (Category Chips)
+
     categoryChips.forEach(chip => {
         chip.addEventListener('click', () => {
             categoryChips.forEach(c => c.classList.remove('active'));
@@ -512,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // STEP 6: Update Navbar with Logged-in User Profile
+
     function updateNavbarAuth() {
         let rawUser = localStorage.getItem('recipeLoggedInUser');
         const loginBtn = document.getElementById('loginBtn');
@@ -520,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (rawUser && loginBtn) {
             let displayName = rawUser;
 
-            // 1. Check if registered user object has a clean username
+
             try {
                 const reg = JSON.parse(localStorage.getItem('registeredRecipeUser') || '{}');
                 if (reg && reg.username && reg.username.trim() !== '') {
@@ -528,12 +525,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch(e) {}
 
-            // 2. If it is an email address, strip the domain
+
             if (displayName.includes('@')) {
                 displayName = displayName.split('@')[0];
             }
 
-            // 3. If the name is like kavindukaushalya0131, clean trailing digits if no custom username was given
+
             if (/^[a-zA-Z]+[0-9]+$/.test(displayName)) {
                 const alphaOnly = displayName.replace(/[0-9]+$/, '');
                 if (alphaOnly.length >= 3) {
@@ -541,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // 4. Capitalize first letter
+
             if (displayName.length > 0) {
                 displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
             }
@@ -575,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize Components
+
     initSearchModal();
     ensureRecipeModal();
     updateNavbarAuth();

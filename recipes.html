@@ -6,19 +6,19 @@
     <title>All Recipes - Digital Recipe Book</title>
     <meta name="description" content="Browse our complete collection of delicious recipes, categorized by Breakfast, Lunch, Dinner, Desserts, Drinks, and Snacks.">
     
-    <!-- Google Fonts -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Icons -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- External CSS Links -->
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Embedded Self-Contained Stylesheet for Standalone Use -->
+    
     <style>
         :root {
             --primary-green: #257838;
@@ -125,9 +125,9 @@
 </head>
 <body>
 
-    <!-- ========================================== -->
-    <!-- 1. HEADER NAVIGATION                       -->
-    <!-- ========================================== -->
+    
+    
+    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo">
@@ -155,9 +155,9 @@
         </div>
     </header>
 
-    <!-- ========================================== -->
-    <!-- 2. CULINARY BANNER STRIP                   -->
-    <!-- ========================================== -->
+    
+    
+    
     <div class="banner-strip">
         <div class="container banner-flex">
             <div class="banner-item"><img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=300&auto=format&fit=crop" alt="Tomato Soup"></div>
@@ -170,13 +170,13 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 3. PAGE TITLE & FILTERS TOOLBAR            -->
-    <!-- ========================================== -->
+    
+    
+    
     <div class="container catalog-header-section">
         <h1 class="page-title">All Recipes</h1>
 
-        <!-- Toolbar Filter Controls -->
+        
         <div class="toolbar-row">
             <div style="display: flex; gap: 14px;">
                 <select class="select-filter" id="categorySelect">
@@ -196,19 +196,19 @@
                 </select>
             </div>
 
-            <!-- Toolbar Search Input -->
+            
             <div class="toolbar-search-box">
                 <input type="text" id="catalogSearchInput" placeholder="search recipes......">
                 <button id="catalogSearchBtn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 4. MAIN LAYOUT (SIDEBAR + RECIPE GRID)    -->
-        <!-- ========================================== -->
+        
+        
+        
         <div class="catalog-layout">
             
-            <!-- Left Sidebar Categories Menu -->
+            
             <aside class="sidebar-categories-box">
                 <div class="sidebar-header">Categories</div>
                 <ul class="sidebar-menu">
@@ -222,17 +222,17 @@
                 </ul>
             </aside>
 
-            <!-- Right 4-Column Recipe Grid -->
+            
             <main class="recipes-4col-grid" id="catalogGrid">
-                <!-- Cards render dynamically via simple JavaScript -->
+                
             </main>
 
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 5. FOOTER SECTION                         -->
-    <!-- ========================================== -->
+    
+    
+    
     <footer class="footer">
         <div class="container footer-flex">
             <div>&copy; 2026 Digital Recipe Book. All rights reserved.</div>
@@ -244,9 +244,9 @@
         </div>
     </footer>
 
-    <!-- ========================================== -->
-    <!-- 6. SIMPLE JAVASCRIPT ENGINE               -->
-    <!-- ========================================== -->
+    
+    
+    
     <script>
         // STEP 1: Simple Dataset for the 8 Recipes shown in reference screenshot
         const catalogRecipes = [

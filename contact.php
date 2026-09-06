@@ -1,8 +1,5 @@
 <?php
-/* ==========================================================================
-   CONTACT FORM (contact.php)
-   Simple PHP Code for Viva Examination Preparation
-   ========================================================================== */
+
 
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
@@ -10,7 +7,7 @@ require_once 'includes/functions.php';
 $successMsg = '';
 $errorMsg = '';
 
-// Check if form is submitted via POST
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name    = sanitize_input($_POST['name'] ?? '');
     $email   = sanitize_input($_POST['email'] ?? '');
@@ -19,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($name) || empty($email) || empty($message)) {
         $errorMsg = "Please fill out all fields!";
     } else {
-        // Insert message into MySQL 'messages' table using Prepared Statements (Security against SQL Injection)
+
         $stmt = $pdo->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
         if ($stmt->execute([$name, $email, $message])) {
             $successMsg = "Thank you, $name! Your message has been sent successfully.";
@@ -60,7 +57,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 </head>
 <body style="background-color: #f8fafc;">
 
-    <!-- Navbar -->
+    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.php" class="brand-logo">
@@ -142,3 +139,5 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
     <script src="app.js"></script>
 </body>
 </html>
+
+

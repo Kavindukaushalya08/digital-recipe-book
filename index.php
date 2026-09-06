@@ -1,10 +1,7 @@
 <?php
-/* ==========================================================================
-   DIGITAL RECIPE BOOK - HOME PAGE (index.php)
-   Dynamic PHP & MySQL Database Integration
-   ========================================================================== */
 
-// Auto-correct trailing slash if user enters index.php/
+
+
 if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] !== '') {
     $clean_url = str_replace($_SERVER['PATH_INFO'], '', $_SERVER['REQUEST_URI']);
     header("Location: " . $clean_url);
@@ -14,16 +11,16 @@ if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] !== '') {
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
 
-// Base URL calculation for robust CSS/JS/Image loading
+
 $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 
-// Fetch popular recipes from MySQL database
+
 $recipes = [];
 try {
     $stmt = $pdo->query("SELECT * FROM recipes ORDER BY id ASC LIMIT 5");
     $recipes = $stmt->fetchAll();
 } catch (Exception $e) {
-    // Fallback if table is not imported yet
+
     $recipes = [];
 }
 ?>
@@ -68,7 +65,7 @@ try {
 </head>
 <body>
 
-    <!-- 1. HEADER & NAVIGATION BAR -->
+    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.php" class="brand-logo">
@@ -109,7 +106,7 @@ try {
         </div>
     </header>
 
-    <!-- 2. HERO SECTION -->
+    
     <section class="hero-section" id="home">
         <div class="container hero-container">
             <div class="hero-content">
@@ -152,7 +149,7 @@ try {
         </div>
     </section>
 
-    <!-- 3. POPULAR RECIPES SECTION -->
+    
     <section class="popular-recipes-section" id="recipes">
         <div class="container">
             <div class="section-header">
@@ -167,14 +164,14 @@ try {
                 </div>
             </div>
 
-            <!-- Dynamic Recipe Grid -->
+            
             <div class="recipes-grid" id="recipesGrid">
-                <!-- If PHP recipes exist, render them or use app.js -->
+                
             </div>
         </div>
     </section>
 
-    <!-- 4. ABOUT SECTION -->
+    
     <section class="about-section" id="about">
         <div class="container about-container">
             <h2>Join Our Culinary Community</h2>
@@ -187,7 +184,7 @@ try {
         </div>
     </section>
 
-    <!-- 5. FOOTER -->
+    
     <footer class="footer" id="contact">
         <div class="container footer-container">
             <div class="copyright-text">&copy; 2026 Digital Recipe Book. All rights reserved.</div>
@@ -199,7 +196,7 @@ try {
         </div>
     </footer>
 
-    <!-- Recipe Detail Modal Popup -->
+    
     <div class="modal-overlay" id="recipeModal">
         <div class="modal-content recipe-detail-modal">
             <button class="modal-close" id="closeRecipeModal">&times;</button>
@@ -210,3 +207,5 @@ try {
     <script src="app.js"></script>
 </body>
 </html>
+
+

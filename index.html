@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Recipe Book - Discover, Cook & Share Recipes</title>
     
-    <!-- 1. Google Fonts -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     
-    <!-- 2. Font Awesome Icons -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- 3. Stylesheet -->
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- ========================================== -->
-    <!-- 1. HEADER & NAVIGATION BAR               -->
-    <!-- ========================================== -->
+    
+    
+    
     <header class="navbar">
         <div class="container nav-container">
-            <!-- Brand Logo -->
+            
             <a href="index.html" class="brand-logo">
                 <div class="logo-icon">
                     <svg viewBox="0 0 40 40" fill="none" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@
                 </div>
             </a>
 
-            <!-- Navigation Links -->
+            
             <nav class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link active">Home</a>
                 <a href="recipes.html" class="nav-link">Recipes</a>
@@ -49,7 +49,7 @@
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
-            <!-- Navigation Buttons -->
+            
             <div class="nav-actions">
                 <button class="search-trigger-btn" id="searchTriggerBtn" title="Search">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -62,12 +62,12 @@
         </div>
     </header>
 
-    <!-- ========================================== -->
-    <!-- 2. HERO SECTION                           -->
-    <!-- ========================================== -->
+    
+    
+    
     <section class="hero-section" id="home">
         <div class="container hero-container">
-            <!-- Left Content Area -->
+            
             <div class="hero-content">
                 <h1 class="hero-title">
                     Discover, Cook<br>
@@ -78,7 +78,7 @@
                     Explore a wide collection of recipes from around the world.
                 </p>
 
-                <!-- Search Input Capsule -->
+                
                 <div class="hero-search-box">
                     <input type="text" id="heroSearchInput" placeholder="Search for recipes...">
                     <button id="heroSearchBtn" aria-label="Search">
@@ -86,7 +86,7 @@
                     </button>
                 </div>
 
-                <!-- Call to Action Buttons -->
+                
                 <div class="hero-cta-group">
                     <a href="recipes.html" class="btn btn-primary" id="browseRecipesBtn">
                         <i class="fa-solid fa-border-all"></i>
@@ -99,7 +99,7 @@
                 </div>
             </div>
 
-            <!-- Right Food Image -->
+            
             <div class="hero-image-wrapper">
                 <div class="hero-image-card">
                     <img src="assets/images/hero_pasta_dish.jpg" 
@@ -111,15 +111,15 @@
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- 3. POPULAR RECIPES GRID SECTION           -->
-    <!-- ========================================== -->
+    
+    
+    
     <section class="popular-recipes-section" id="recipes">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">🔥 Popular Recipes</h2>
                 
-                <!-- Category Filter Pills -->
+                
                 <div class="category-filters" id="categoryFilters">
                     <button class="filter-chip active" data-category="all">All</button>
                     <button class="filter-chip" data-category="Breakfast">Breakfast</button>
@@ -130,16 +130,16 @@
                 </div>
             </div>
 
-            <!-- Dynamic Recipe Cards Grid (Populated by app.js) -->
+            
             <div class="recipes-grid" id="recipesGrid">
-                <!-- Cards render here via JavaScript -->
+                
             </div>
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- 4. ABOUT SECTION                           -->
-    <!-- ========================================== -->
+    
+    
+    
     <section class="about-section" id="about">
         <div class="container about-container">
             <h2>Join Our Culinary Community</h2>
@@ -161,9 +161,9 @@
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- 5. FOOTER SECTION                         -->
-    <!-- ========================================== -->
+    
+    
+    
     <footer class="footer" id="contact">
         <div class="container footer-container">
             <div class="copyright-text">
@@ -177,10 +177,10 @@
         </div>
     </footer>
 
-    <!-- ========================================== -->
-    <!-- 6. MODALS (POPUP WINDOWS)                 -->
-    <!-- ========================================== -->
-    <!-- Recipe Details Popup Modal -->
+    
+    
+    
+    
     <div class="modal-overlay" id="recipeModal">
         <div class="modal-content recipe-detail-modal">
             <button class="modal-close" id="closeRecipeModal">&times;</button>
@@ -188,10 +188,10 @@
         </div>
     </div>
 
-    <!-- Toast Notification Message -->
+    
     <div class="toast" id="toast"></div>
 
-    <!-- JavaScript File -->
+    
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,20 +1,17 @@
 <?php
-/* ==========================================================================
-   USER DASHBOARD & RECIPE SUBMISSION (dashboard.php)
-   Simple PHP Code for Viva Examination Preparation
-   ========================================================================== */
+
 
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
 
-// Check if user is logged in, otherwise redirect to login page
+
 require_login();
 
 $user = get_logged_in_user();
 $msg = '';
 $err = '';
 
-// Handle Recipe Submission Form via POST
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title        = sanitize_input($_POST['title'] ?? '');
     $category     = sanitize_input($_POST['category'] ?? 'Main Course');
@@ -26,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($title) || empty($ingredients) || empty($instructions)) {
         $err = "Please fill in all required recipe fields!";
     } else {
-        // Insert into recipes table using Prepared Statements
+
         $stmt = $pdo->prepare("INSERT INTO recipes (title, category, prep_time, ingredients, instructions, user_id) VALUES (?, ?, ?, ?, ?, ?)");
         if ($stmt->execute([$title, $category, $prep_time, $ingredients, $instructions, $user_id])) {
             $msg = "Recipe '$title' published successfully!";
@@ -36,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Fetch recipes submitted by this user
+
 $userRecipesStmt = $pdo->prepare("SELECT * FROM recipes WHERE user_id = ? ORDER BY id DESC");
 $userRecipesStmt->execute([$user['id']]);
 $myRecipes = $userRecipesStmt->fetchAll();
@@ -76,7 +73,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 </head>
 <body style="background-color: #f1f5f9;">
 
-    <!-- Navbar -->
+    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.php" class="brand-logo">
@@ -105,7 +102,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 
     <div class="dashboard-container">
         
-        <!-- User Welcome Box -->
+        
         <div class="dashboard-header">
             <div class="user-greeting">
                 <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>! 👋</h1>
@@ -125,7 +122,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 
         <div class="dashboard-grid">
             
-            <!-- Left: Add Recipe Form -->
+            
             <div class="dash-card">
                 <h3 class="dash-card-title"><i class="fa-solid fa-plus-circle"></i> Add New Recipe</h3>
                 <form action="dashboard.php" method="POST">
@@ -160,7 +157,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
                 </form>
             </div>
 
-            <!-- Right: My Submitted Recipes -->
+            
             <div class="dash-card">
                 <h3 class="dash-card-title"><i class="fa-solid fa-book-open"></i> My Submitted Recipes (<?php echo count($myRecipes); ?>)</h3>
                 
@@ -186,3 +183,5 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
     <script src="app.js"></script>
 </body>
 </html>
+
+
