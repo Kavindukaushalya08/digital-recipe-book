@@ -409,14 +409,20 @@ button {
 }
 
 .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 8px 20px;
     border-radius: var(--radius-pill);
     background-color: #f1f5f9;
     color: var(--text-muted);
     font-weight: 600;
     font-size: 0.9rem;
+    line-height: 1.2;
     white-space: nowrap;
     border: 1px solid transparent;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 .filter-chip:hover {
@@ -1015,6 +1021,7 @@ button {
 
 .search-modal-categories {
     display: flex;
+    align-items: center;
     gap: 8px;
     padding: 12px 24px;
     background: #f8fafc;
@@ -1024,15 +1031,20 @@ button {
 }
 
 .search-tag-chip {
-    padding: 5px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
     border-radius: 999px;
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 600;
+    line-height: 1.2;
     background: #ffffff;
     color: #475569;
     border: 1px solid #cbd5e1;
     cursor: pointer;
     transition: all 0.2s;
+    box-sizing: border-box;
 }
 
 .search-tag-chip:hover, .search-tag-chip.active {
@@ -1188,83 +1200,80 @@ button {
    About / Community Section
    ========================================================================== */
 .about-section {
-    background: linear-gradient(135deg, #f0fdf4 0%, #eaf5ec 100%);
-    padding: 70px 0;
-    text-align: center;
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    padding: 60px 0 70px;
+    border-top: 1px solid #f1f5f9;
 }
 
 .about-container {
-    max-width: 800px;
+    max-width: 1240px;
     margin: 0 auto;
 }
 
 .about-container h2 {
-    font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-size: 2rem;
     font-weight: 800;
     color: #1e252b;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .about-container p {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 36px;
+    font-size: 1rem;
+    color: #5a6578;
+    line-height: 1.6;
+    max-width: 720px;
+    margin-bottom: 28px;
 }
 
 .stats-row {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 48px;
 }
 
 .stat-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    background: #ffffff;
-    padding: 16px 28px;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e2e8f0;
-    min-width: 140px;
+    align-items: flex-start;
+    gap: 2px;
 }
 
 .stat-num {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-size: 2.2rem;
     font-weight: 800;
-    color: var(--primary-green);
+    color: #257838;
+    line-height: 1.1;
 }
 
 .stat-label {
     font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--text-muted);
+    font-weight: 600;
+    color: #8a96a8;
 }
 
 /* ==========================================================================
    Footer Styles
    ========================================================================== */
 .footer {
-    background-color: var(--primary-green);
-    color: #ffffff;
-    padding: 24px 0;
-    font-size: 0.95rem;
+    background-color: #257838 !important;
+    color: #ffffff !important;
+    padding: 24px 0 !important;
+    width: 100% !important;
 }
 
-.footer-flex, .footer-container {
+.footer .container, .footer-container, .footer-flex {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.footer div, .copyright-text {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .social-icons, .social-links {
@@ -1274,22 +1283,15 @@ button {
 }
 
 .social-icons a, .social-links a {
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: 1.1rem;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
     text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .social-icons a:hover, .social-links a:hover {
-    background: var(--primary-orange);
-    transform: translateY(-3px);
+    opacity: 0.8;
+    transform: translateY(-2px);
 }
 
 

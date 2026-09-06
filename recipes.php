@@ -127,10 +127,9 @@ $jsonRecipes = json_encode($catalogRecipes);
         .search-modal-icon { font-size: 1.3rem; color: #00a843; }
         .search-modal-input { flex: 1; border: none; outline: none; font-size: 1.15rem; font-family: inherit; font-weight: 600; color: #1e252b; background: transparent; }
         .search-modal-close-btn { background: #f1f5f9; color: #64748b; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; cursor: pointer; }
-        .search-modal-close-btn:hover { background: #fee2e2; color: #ef4444; }
-        .search-modal-categories { display: flex; gap: 8px; padding: 12px 24px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; overflow-x: auto; white-space: nowrap; }
-        .search-tag-chip { padding: 5px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; background: #ffffff; color: #475569; border: 1px solid #cbd5e1; cursor: pointer; }
-        .search-tag-chip:hover, .search-tag-chip.active { background: #00a843; color: white; border-color: #00a843; }
+        .search-modal-categories { display: flex; align-items: center; gap: 8px; padding: 12px 24px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; overflow-x: auto; white-space: nowrap; }
+        .search-tag-chip { display: inline-flex; align-items: center; justify-content: center; padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; line-height: 1.2; background: #ffffff; color: #475569; border: 1px solid #cbd5e1; cursor: pointer; transition: all 0.2s; box-sizing: border-box; }
+        .search-tag-chip:hover, .search-tag-chip.active { background: #00a843; color: #ffffff; border-color: #00a843; }
         .search-modal-results { padding: 12px 16px; overflow-y: auto; max-height: 480px; display: flex; flex-direction: column; gap: 8px; }
         .search-result-item { display: flex; align-items: center; gap: 16px; padding: 10px 14px; border-radius: 12px; background: #ffffff; border: 1px solid transparent; cursor: pointer; transition: all 0.2s; }
         .search-result-item:hover { background: #f0fdf4; border-color: #bbf7d0; transform: translateX(4px); }
