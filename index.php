@@ -94,7 +94,10 @@ try {
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
                 <?php if (is_logged_in()): ?>
-                    <a href="dashboard.php" class="login-btn" style="background:#00a843;">Dashboard</a>
+                    <a href="dashboard.php" class="login-btn" style="background:#00a843; display:inline-flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span><?php echo htmlspecialchars($_SESSION['username'] ?? 'Profile'); ?></span>
+                    </a>
                     <a href="auth/logout.php" class="login-btn" style="background:#ef4444;">Logout</a>
                 <?php else: ?>
                     <a href="auth/login.php" class="login-btn" id="loginBtn">

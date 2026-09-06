@@ -206,10 +206,10 @@
 
                     <form id="authLoginForm" class="auth-form">
                         <div class="input-field-group">
-                            <label for="authEmail">Email Address</label>
+                            <label for="authEmail">Username or Email</label>
                             <div class="input-icon-wrapper">
-                                <i class="fa-regular fa-envelope input-icon"></i>
-                                <input type="email" id="authEmail" required placeholder="Enter your email">
+                                <i class="fa-regular fa-user input-icon"></i>
+                                <input type="text" id="authEmail" required placeholder="Enter username or email">
                             </div>
                         </div>
 
@@ -345,17 +345,31 @@
 
             authLoginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const email = document.getElementById('authEmail').value;
-                const username = email.split('@')[0];
+                const loginInput = document.getElementById('authEmail').value.trim();
                 
-                // Save user login state in Browser
-                localStorage.setItem('recipeLoggedInUser', username);
+                // Check if user was saved in browser localStorage
+                let displayUsername = loginInput;
+                try {
+                    const savedUser = JSON.parse(localStorage.getItem('registeredRecipeUser') || '{}');
+                    if (savedUser && savedUser.username) {
+                        if (savedUser.username.toLowerCase() === loginInput.toLowerCase() || (savedUser.email && savedUser.email.toLowerCase() === loginInput.toLowerCase())) {
+                            displayUsername = savedUser.username;
+                        }
+                    }
+                } catch (err) {}
+
+                if (displayUsername.includes('@')) {
+                    displayUsername = displayUsername.split('@')[0];
+                }
                 
-                toast.textContent = `Welcome back, ${username}! 🎉 Redirecting to Home...`;
+                // Save clean user login state in Browser
+                localStorage.setItem('recipeLoggedInUser', displayUsername);
+                
+                toast.textContent = `Welcome back, ${displayUsername}! 🎉 Redirecting to Home...`;
                 toast.classList.add('show');
                 setTimeout(() => {
                     window.location.href = 'index.html';
-                }, 1200);
+                }, 1000);
             });
         });
     </script>
