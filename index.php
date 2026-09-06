@@ -153,7 +153,7 @@ try {
     <section class="popular-recipes-section" id="recipes">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">🔥 Popular Recipes</h2>
+                <h2 class="section-title">ðŸ”¥ Popular Recipes</h2>
                 <div class="category-filters" id="categoryFilters">
                     <button class="filter-chip active" data-category="all">All</button>
                     <button class="filter-chip" data-category="Breakfast">Breakfast</button>
@@ -179,19 +179,19 @@ try {
             <div class="stats-row">
                 <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Recipes</span></div>
                 <div class="stat-item"><span class="stat-num">50k+</span><span class="stat-label">Foodies</span></div>
-                <div class="stat-item"><span class="stat-num">4.9★</span><span class="stat-label">Rating</span></div>
+                <div class="stat-item"><span class="stat-num">4.9â˜…</span><span class="stat-label">Rating</span></div>
             </div>
         </div>
     </section>
 
     
-    <footer class="footer" id="contact">
-        <div class="container footer-container">
-            <div class="copyright-text">&copy; 2026 Digital Recipe Book. All rights reserved.</div>
-            <div class="social-links">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <footer class="footer" id="contact">
+        <div class="container footer-flex">
+            <div>&copy; 2026 Digital Recipe Book. All rights reserved.</div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
     </footer>
