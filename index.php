@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 
 
@@ -82,7 +82,7 @@ try {
             <nav class="nav-links" id="navLinks">
                 <a href="index.php" class="nav-link active">Home</a>
                 <a href="recipes.php" class="nav-link">Recipes</a>
-                <a href="about.html" class="nav-link">About</a>
+                <a href="about.php" class="nav-link">About</a>
                 <a href="contact.php" class="nav-link">Contact</a>
             </nav>
 
