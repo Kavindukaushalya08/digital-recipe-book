@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             searchOverlay = document.createElement('div');
             searchOverlay.id = 'searchModalOverlay';
             searchOverlay.className = 'modal-overlay';
+            searchOverlay.style.display = 'none'; // Hidden by default
             searchOverlay.innerHTML = `
                 <div class="search-modal-container">
                     <div class="search-modal-header">
@@ -277,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Open Search Modal
         function openSearchModal() {
+            searchOverlay.style.display = 'flex';
             searchOverlay.classList.add('active');
             renderSearchResults();
             setTimeout(() => {
@@ -290,6 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close Search Modal
         function closeSearchModal() {
             searchOverlay.classList.remove('active');
+            searchOverlay.style.display = 'none';
         }
 
         // Event listeners inside search modal
@@ -329,7 +332,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeSearchModal();
-                if (recipeModal) recipeModal.classList.remove('active');
+                if (recipeModal) {
+                    recipeModal.classList.remove('active');
+                    recipeModal.style.display = 'none';
+                }
             }
             if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
                 e.preventDefault();
@@ -344,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
             recipeModal = document.createElement('div');
             recipeModal.id = 'recipeModal';
             recipeModal.className = 'modal-overlay';
+            recipeModal.style.display = 'none';
             recipeModal.innerHTML = `
                 <div class="modal-content recipe-detail-modal">
                     <button class="modal-close" id="closeRecipeModal">&times;</button>
@@ -356,10 +363,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (closeRecipeModal) {
-            closeRecipeModal.onclick = () => recipeModal.classList.remove('active');
+            closeRecipeModal.onclick = () => {
+                recipeModal.classList.remove('active');
+                recipeModal.style.display = 'none';
+            };
         }
         recipeModal.onclick = (e) => {
-            if (e.target === recipeModal) recipeModal.classList.remove('active');
+            if (e.target === recipeModal) {
+                recipeModal.classList.remove('active');
+                recipeModal.style.display = 'none';
+            }
         };
     }
 
@@ -440,6 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="color: #334155; line-height: 1.7;">${recipe.instructions}</div>
             </div>
         `;
+        recipeModal.style.display = 'flex';
         recipeModal.classList.add('active');
     }
 
