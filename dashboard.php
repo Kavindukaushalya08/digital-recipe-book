@@ -88,7 +88,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
             </a>
             <nav class="nav-links">
                 <a href="index.php" class="nav-link">Home</a>
-                <a href="recipes.html" class="nav-link">Recipes</a>
+                <a href="recipes.php" class="nav-link">Recipes</a>
                 <a href="contact.php" class="nav-link">Contact</a>
             </nav>
             <div class="nav-actions">
@@ -105,7 +105,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
         
         <div class="dashboard-header">
             <div class="user-greeting">
-                <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>! 👋</h1>
+                <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>! ðŸ‘‹</h1>
                 <p>Manage your submitted recipes and share new culinary dishes.</p>
             </div>
             <div>
@@ -151,7 +151,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
                     </div>
                     <div class="form-group">
                         <label>Cooking Instructions</label>
-                        <textarea name="instructions" rows="4" required placeholder="Melt butter, sauté garlic, cook shrimp for 4 minutes and garnish."></textarea>
+                        <textarea name="instructions" rows="4" required placeholder="Melt butter, sautÃ© garlic, cook shrimp for 4 minutes and garnish."></textarea>
                     </div>
                     <button type="submit" class="btn-green"><i class="fa-solid fa-upload me-2"></i> Publish to Database</button>
                 </form>

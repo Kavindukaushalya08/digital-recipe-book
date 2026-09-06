@@ -72,7 +72,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
             </a>
             <nav class="nav-links">
                 <a href="index.php" class="nav-link">Home</a>
-                <a href="recipes.html" class="nav-link">Recipes</a>
+                <a href="recipes.php" class="nav-link">Recipes</a>
                 <a href="contact.php" class="nav-link active">Contact</a>
             </nav>
             <div class="nav-actions">

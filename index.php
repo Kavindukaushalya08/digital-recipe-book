@@ -81,7 +81,7 @@ try {
 
             <nav class="nav-links" id="navLinks">
                 <a href="index.php" class="nav-link active">Home</a>
-                <a href="recipes.html" class="nav-link">Recipes</a>
+                <a href="recipes.php" class="nav-link">Recipes</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="contact.php" class="nav-link">Contact</a>
             </nav>
@@ -127,7 +127,7 @@ try {
                 </div>
 
                 <div class="hero-cta-group">
-                    <a href="recipes.html" class="btn btn-primary" id="browseRecipesBtn">
+                    <a href="recipes.php" class="btn btn-primary" id="browseRecipesBtn">
                         <i class="fa-solid fa-border-all"></i>
                         <span>Browse Recipes</span>
                     </a>
@@ -153,7 +153,7 @@ try {
     <section class="popular-recipes-section" id="recipes">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">ðŸ”¥ Popular Recipes</h2>
+                <h2 class="section-title">Ã°Å¸â€Â¥ Popular Recipes</h2>
                 <div class="category-filters" id="categoryFilters">
                     <button class="filter-chip active" data-category="all">All</button>
                     <button class="filter-chip" data-category="Breakfast">Breakfast</button>
@@ -179,7 +179,7 @@ try {
             <div class="stats-row">
                 <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Recipes</span></div>
                 <div class="stat-item"><span class="stat-num">50k+</span><span class="stat-label">Foodies</span></div>
-                <div class="stat-item"><span class="stat-num">4.9â˜…</span><span class="stat-label">Rating</span></div>
+                <div class="stat-item"><span class="stat-num">4.9Ã¢Ëœâ€¦</span><span class="stat-label">Rating</span></div>
             </div>
         </div>
     </section>

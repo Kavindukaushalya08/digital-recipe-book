@@ -1,3 +1,24 @@
+<?php
+session_start();
+require_once 'includes/db.php';
+
+$stmt = $pdo->query("SELECT * FROM recipes ORDER BY id DESC");
+$dbRecipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$catalogRecipes = [];
+foreach ($dbRecipes as $r) {
+    $catalogRecipes[] = [
+        'id' => $r['id'],
+        'title' => $r['title'],
+        'category' => $r['category'],
+        'time' => $r['prep_time'],
+        'rating' => $r['rating'],
+        'image' => $r['image'],
+        'fallback' => $r['fallback_image']
+    ];
+}
+$jsonRecipes = json_encode($catalogRecipes);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,7 +151,7 @@
     
     <header class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="brand-logo">
+            <a href="index.php" class="brand-logo">
                 <svg viewBox="0 0 40 40" fill="none" width="38" height="38">
                     <path d="M20 5C14.4772 5 10 9.47715 10 15C10 17.5 10.9 19.8 12.4 21.5C9.5 22.8 7.5 25.6 7.5 29H32.5C32.5 25.6 30.5 22.8 27.6 21.5C29.1 19.8 30 17.5 30 15C30 9.47715 25.5228 5 20 5Z" fill="#257838"/>
                     <path d="M8 29H32V32C32 33.6569 30.6569 35 29 35H11C9.34315 35 8 33.6569 8 32V29Z" fill="#EE5D20"/>
@@ -142,8 +163,8 @@
             </a>
 
             <nav class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="recipes.html" class="nav-link active">Recipes</a>
+                <a href="index.php" class="nav-link">Home</a>
+                <a href="recipes.php" class="nav-link active">Recipes</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
@@ -212,13 +233,13 @@
             <aside class="sidebar-categories-box">
                 <div class="sidebar-header">Categories</div>
                 <ul class="sidebar-menu">
-                    <li class="sidebar-item active" data-cat="all"><span>🎨</span> All Categories</li>
-                    <li class="sidebar-item" data-cat="Breakfast"><span>🥐</span> Breakfast</li>
-                    <li class="sidebar-item" data-cat="Lunch"><span>🍱</span> Lunch</li>
-                    <li class="sidebar-item" data-cat="Dinner"><span>🍲</span> Dinner</li>
-                    <li class="sidebar-item" data-cat="Dessert"><span>🍰</span> Dessert</li>
-                    <li class="sidebar-item" data-cat="Drinks"><span>🍹</span> Drinks</li>
-                    <li class="sidebar-item" data-cat="Snacks"><span>🥗</span> Snacks</li>
+                    <li class="sidebar-item active" data-cat="all"><span>Ã°Å¸Å½Â¨</span> All Categories</li>
+                    <li class="sidebar-item" data-cat="Breakfast"><span>Ã°Å¸Â¥Â</span> Breakfast</li>
+                    <li class="sidebar-item" data-cat="Lunch"><span>Ã°Å¸ÂÂ±</span> Lunch</li>
+                    <li class="sidebar-item" data-cat="Dinner"><span>Ã°Å¸ÂÂ²</span> Dinner</li>
+                    <li class="sidebar-item" data-cat="Dessert"><span>Ã°Å¸ÂÂ°</span> Dessert</li>
+                    <li class="sidebar-item" data-cat="Drinks"><span>Ã°Å¸ÂÂ¹</span> Drinks</li>
+                    <li class="sidebar-item" data-cat="Snacks"><span>Ã°Å¸Â¥â€”</span> Snacks</li>
                 </ul>
             </aside>
 
@@ -249,80 +270,7 @@
     
     <script>
         // STEP 1: Simple Dataset for the 8 Recipes shown in reference screenshot
-        const catalogRecipes = [
-            {
-                id: 1,
-                title: "Fluffy Pancakes",
-                category: "Breakfast",
-                time: "20 Min",
-                rating: 4.6,
-                image: "assets/images/fluffy_pancakes.jpg",
-                fallback: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?q=80&w=600"
-            },
-            {
-                id: 2,
-                title: "Chicken Biriyani",
-                category: "Lunch",
-                time: "60 Min",
-                rating: 4.8,
-                image: "assets/images/chicken_biryani.jpg",
-                fallback: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=600"
-            },
-            {
-                id: 3,
-                title: "Spaghetti Carbonara",
-                category: "Dinner",
-                time: "30 Min",
-                rating: 4.5,
-                image: "assets/images/spaghetti_carbonara.jpg",
-                fallback: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=600"
-            },
-            {
-                id: 4,
-                title: "Chocolate Cake",
-                category: "Dessert",
-                time: "45 Min",
-                rating: 4.7,
-                image: "assets/images/chocolate_cake.jpg",
-                fallback: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600"
-            },
-            {
-                id: 5,
-                title: "Veggie Stir Fry",
-                category: "Snacks",
-                time: "25 Min",
-                rating: 4.4,
-                image: "assets/images/veggie_stir_fry.jpg",
-                fallback: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=600"
-            },
-            {
-                id: 6,
-                title: "Tomato Soup",
-                category: "Dinner",
-                time: "20 Min",
-                rating: 4.3,
-                image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=600",
-                fallback: "https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=600"
-            },
-            {
-                id: 7,
-                title: "Grilled Salmon",
-                category: "Lunch",
-                time: "35 Min",
-                rating: 4.6,
-                image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=600",
-                fallback: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=600"
-            },
-            {
-                id: 8,
-                title: "Fruit Salad",
-                category: "Drinks",
-                time: "15 Min",
-                rating: 4.2,
-                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600",
-                fallback: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600"
-            }
-        ];
+        const catalogRecipes = $jsonRecipes;
 
         let selectedCategory = 'all';
         let searchQuery = '';
@@ -353,7 +301,7 @@
                     <div class="card-content-row">
                         <div class="card-recipe-title">${item.title}</div>
                         <div class="card-meta-line">
-                            <span>${item.time} &nbsp;|&nbsp; ⭐ ${item.rating}</span>
+                            <span>${item.time} &nbsp;|&nbsp; Ã¢Â­Â ${item.rating}</span>
                             <i class="fa-regular fa-heart fav-heart-icon" onclick="toggleHeart(this)"></i>
                         </div>
                     </div>
