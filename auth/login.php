@@ -10,8 +10,8 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $loginInput = trim($_POST['username']);
-    $password   = trim($_POST['password']);
+    $loginInput = trim($_POST['username'] ?? $_POST['login_input'] ?? '');
+    $password   = trim($_POST['password'] ?? '');
 
     if (empty($loginInput) || empty($password)) {
         $error = "Please enter both Username/Email and Password!";

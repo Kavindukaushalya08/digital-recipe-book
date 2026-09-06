@@ -512,11 +512,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateNavbarAuth() {
         let rawUser = localStorage.getItem('recipeLoggedInUser');
-        const loginBtn = document.getElementById('loginBtn');
+        const loginBtn = document.getElementById('loginBtn') || 
+                         document.querySelector('.nav-actions a[href*="login"]') || 
+                         document.querySelector('.nav-actions a[title="Account"]') ||
+                         document.querySelector('.nav-actions .fa-circle-user')?.closest('a');
         
         if (rawUser && loginBtn) {
             let displayName = rawUser;
-
 
             try {
                 const reg = JSON.parse(localStorage.getItem('registeredRecipeUser') || '{}');
@@ -525,11 +527,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch(e) {}
 
-
             if (displayName.includes('@')) {
                 displayName = displayName.split('@')[0];
             }
-
 
             if (/^[a-zA-Z]+[0-9]+$/.test(displayName)) {
                 const alphaOnly = displayName.replace(/[0-9]+$/, '');
@@ -538,7 +538,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-
             if (displayName.length > 0) {
                 displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
             }
@@ -546,28 +545,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const parent = loginBtn.parentElement;
             loginBtn.remove();
             
-            const userBox = document.createElement('div');
-            userBox.id = 'userProfileNav';
-            userBox.style.display = 'flex';
-            userBox.style.alignItems = 'center';
-            userBox.style.gap = '10px';
-            userBox.innerHTML = `
-                <a href="dashboard.php" style="background:#00a843; color:white; padding:8px 16px; border-radius:10px; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <span>${displayName}</span>
-                </a>
-                <button id="customLogoutBtn" style="background:#ef4444; color:white; border:none; padding:8px 14px; border-radius:10px; font-weight:700; cursor:pointer;" title="Logout">
-                    <i class="fa-solid fa-power-off"></i>
-                </button>
-            `;
-            parent.appendChild(userBox);
+            // Check if already created
+            if (!document.getElementById('userProfileNav')) {
+                const userBox = document.createElement('div');
+                userBox.id = 'userProfileNav';
+                userBox.style.display = 'inline-flex';
+                userBox.style.alignItems = 'center';
+                userBox.style.gap = '8px';
+                userBox.innerHTML = `
+                    <a href="dashboard.php" style="background:#00a843; color:white; padding:8px 16px; border-radius:99px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px; font-size:0.95rem;">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span>${displayName}</span>
+                    </a>
+                    <a href="auth/logout.php" id="customLogoutBtn" style="background:#ef4444; color:white; text-decoration:none; padding:8px 14px; border-radius:99px; font-weight:700; display:inline-flex; align-items:center; font-size:0.9rem;" title="Logout">Logout</a>
+                `;
+                parent.appendChild(userBox);
 
-            const logoutBtn = document.getElementById('customLogoutBtn');
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', () => {
-                    localStorage.removeItem('recipeLoggedInUser');
-                    window.location.reload();
-                });
+                const logoutBtn = document.getElementById('customLogoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => {
+                        localStorage.removeItem('recipeLoggedInUser');
+                    });
+                }
             }
         }
     }
