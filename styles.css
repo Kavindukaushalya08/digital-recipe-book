@@ -1184,3 +1184,112 @@ button {
     object-fit: cover;
 }
 
+/* ==========================================================================
+   About / Community Section
+   ========================================================================== */
+.about-section {
+    background: linear-gradient(135deg, #f0fdf4 0%, #eaf5ec 100%);
+    padding: 70px 0;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-container h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1e252b;
+    margin-bottom: 14px;
+}
+
+.about-container p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+}
+
+.stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: #ffffff;
+    padding: 16px 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    min-width: 140px;
+}
+
+.stat-num {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-green);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+.footer {
+    background-color: var(--primary-green);
+    color: #ffffff;
+    padding: 24px 0;
+    font-size: 0.95rem;
+}
+
+.footer-flex, .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.social-icons, .social-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-icons a, .social-links a {
+    color: #ffffff;
+    font-size: 1.1rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover, .social-links a:hover {
+    background: var(--primary-orange);
+    transform: translateY(-3px);
+}
+
+
