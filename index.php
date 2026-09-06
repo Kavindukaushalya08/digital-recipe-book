@@ -153,7 +153,7 @@ try {
     <section class="popular-recipes-section" id="recipes">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Ã°Å¸â€Â¥ Popular Recipes</h2>
+                <h2 class="section-title"><i class="fa-solid fa-fire text-orange"></i> Popular Recipes</h2>
                 <div class="category-filters" id="categoryFilters">
                     <button class="filter-chip active" data-category="all">All</button>
                     <button class="filter-chip" data-category="Breakfast">Breakfast</button>
@@ -179,7 +179,7 @@ try {
             <div class="stats-row">
                 <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Recipes</span></div>
                 <div class="stat-item"><span class="stat-num">50k+</span><span class="stat-label">Foodies</span></div>
-                <div class="stat-item"><span class="stat-num">4.9Ã¢Ëœâ€¦</span><span class="stat-label">Rating</span></div>
+                <div class="stat-item"><span class="stat-num">4.9 <i class="fa-solid fa-star" style="color: #ffb800; font-size: 1.2rem;"></i></span><span class="stat-label">Rating</span></div>
             </div>
         </div>
     </section>

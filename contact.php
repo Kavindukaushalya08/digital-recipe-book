@@ -106,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errorMsg = "Failed to send message. Please try again.";
         }
     }
+}
 $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 ?>
 <!DOCTYPE html>
