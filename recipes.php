@@ -13,7 +13,9 @@ foreach ($dbRecipes as $r) {
         'title' => $r['title'],
         'category' => $r['category'],
         'time' => $r['prep_time'],
-        'rating' => $r['rating'],
+        'rating' => $r['rating'] ?? 4.5,
+        'ingredients' => $r['ingredients'] ?? '',
+        'instructions' => $r['instructions'] ?? '',
         'image' => !empty($r['image']) ? $r['image'] : 'assets/images/hero_pasta_dish.jpg',
         'fallback' => $r['fallback_image'] ?? 'assets/images/hero_pasta_dish.jpg'
     ];
@@ -244,8 +246,14 @@ $jsonRecipes = json_encode($catalogRecipes);
         </div>
     </footer>
 
+    <div class="modal-overlay" id="recipeModal" style="display: none;">
+        <div class="modal-content recipe-detail-modal">
+            <button class="modal-close" id="closeRecipeModal">&times;</button>
+            <div class="recipe-detail-body" id="recipeDetailBody"></div>
+        </div>
+    </div>
+
     <script>
-        
         const catalogRecipes = <?= $jsonRecipes ?>;
 
         let selectedCategory = 'all';
@@ -253,6 +261,7 @@ $jsonRecipes = json_encode($catalogRecipes);
 
         function renderCatalog() {
             const grid = document.getElementById('catalogGrid');
+            if (!grid) return;
             grid.innerHTML = '';
 
             const filtered = catalogRecipes.filter(item => {
@@ -277,10 +286,11 @@ $jsonRecipes = json_encode($catalogRecipes);
                         <div class="card-recipe-title">${item.title}</div>
                         <div class="card-meta-line">
                             <span>${item.time} &nbsp;|&nbsp; ⭐ ${item.rating}</span>
-                            <i class="fa-regular fa-heart fav-heart-icon" onclick="toggleHeart(this)"></i>
+                            <i class="fa-regular fa-heart fav-heart-icon" onclick="event.stopPropagation(); toggleHeart(this)"></i>
                         </div>
                     </div>
                 `;
+                card.addEventListener('click', () => openRecipeDetailModal(item));
                 grid.appendChild(card);
             });
         }
@@ -291,11 +301,65 @@ $jsonRecipes = json_encode($catalogRecipes);
             icon.classList.toggle('liked');
         }
 
+        function openRecipeDetailModal(recipe) {
+            const modal = document.getElementById('recipeModal');
+            const body = document.getElementById('recipeDetailBody');
+            if (!modal || !body) return;
+
+            let ingredientsList = [];
+            if (Array.isArray(recipe.ingredients)) {
+                ingredientsList = recipe.ingredients;
+            } else if (typeof recipe.ingredients === 'string') {
+                ingredientsList = recipe.ingredients.split(',').map(s => s.trim()).filter(Boolean);
+            }
+
+            body.innerHTML = `
+                <img src="${recipe.image}" 
+                     onerror="this.onerror=null; this.src='${recipe.fallback}';" 
+                     alt="${recipe.title}" 
+                     class="recipe-detail-img" style="width: 100%; height: 260px; object-fit: cover;">
+                <div style="padding: 24px;">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 12px; color: #1e252b; font-family: 'Outfit', sans-serif;">${recipe.title}</h2>
+                    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 18px; font-size: 0.9rem; color: #64748b;">
+                        <span style="background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 6px; font-weight: 700;">${recipe.category}</span>
+                        <span><i class="fa-regular fa-clock"></i> <strong>Time:</strong> ${recipe.time}</span>
+                        <span>⭐ <strong>Rating:</strong> ${recipe.rating}</span>
+                    </div>
+                    
+                    <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #257838; font-weight: 700;">🛒 Ingredients:</h4>
+                    <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.7; color: #334155;">
+                        ${ingredientsList.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                    
+                    <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #ee5d20; font-weight: 700;">👨‍🍳 Instructions:</h4>
+                    <div style="color: #334155; line-height: 1.7;">${recipe.instructions}</div>
+                </div>
+            `;
+
+            modal.style.display = 'flex';
+            modal.classList.add('active');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const sidebarItems = document.querySelectorAll('.sidebar-item');
             const categorySelect = document.getElementById('categorySelect');
             const searchInput = document.getElementById('catalogSearchInput');
             const searchBtn = document.getElementById('catalogSearchBtn');
+            const closeBtn = document.getElementById('closeRecipeModal');
+            const modal = document.getElementById('recipeModal');
+
+            if (closeBtn && modal) {
+                closeBtn.onclick = () => {
+                    modal.classList.remove('active');
+                    modal.style.display = 'none';
+                };
+                modal.onclick = (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                        modal.style.display = 'none';
+                    }
+                };
+            }
 
             sidebarItems.forEach(item => {
                 item.addEventListener('click', () => {
