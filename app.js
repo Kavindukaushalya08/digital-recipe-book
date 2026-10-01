@@ -78,7 +78,7 @@ const recipesData = [
             "1/2 cup Vegetable oil",
             "1 cup Boiling water or brewed coffee"
         ],
-        instructions: "1. Preheat oven to 350°F (175°C) and grease cake pans.<br>2. Whisk dry ingredients in a bowl.<br>3. Add eggs, milk, oil, and vanilla; beat on medium speed for 2 mins.<br>4. Stir in boiling water to create a thin, rich batter.<br>5. Bake for 30–35 minutes until a toothpick inserted in center comes out clean."
+        instructions: "1. Preheat oven to 350 F (175 C) and grease cake pans.<br>2. Whisk dry ingredients in a bowl.<br>3. Add eggs, milk, oil, and vanilla; beat on medium speed for 2 mins.<br>4. Stir in boiling water to create a thin, rich batter.<br>5. Bake for 30–35 minutes until a toothpick inserted in center comes out clean."
     },
     {
         id: 5,
@@ -115,7 +115,7 @@ const recipesData = [
             "1/2 cup Heavy cream",
             "Fresh basil leaves & olive oil"
         ],
-        instructions: "1. Sauté onions and garlic in olive oil until soft.<br>2. Add tomatoes, basil, and vegetable broth; simmer for 15 minutes.<br>3. Blend with an immersion blender until completely smooth and velvety.<br>4. Stir in fresh heavy cream, season with salt and pepper, and serve with crusty garlic bread."
+        instructions: "1. Saute onions and garlic in olive oil until soft.<br>2. Add tomatoes, basil, and vegetable broth; simmer for 15 minutes.<br>3. Blend with an immersion blender until completely smooth and velvety.<br>4. Stir in fresh heavy cream, season with salt and pepper, and serve with crusty garlic bread."
     },
     {
         id: 7,
@@ -133,7 +133,7 @@ const recipesData = [
             "2 Cloves garlic (minced)",
             "Fresh dill, salt, and black pepper"
         ],
-        instructions: "1. Season salmon fillets with olive oil, lemon juice, garlic, and fresh dill.<br>2. Preheat grill or cast iron grill pan over medium-high heat.<br>3. Place salmon skin-side down and cook undisturbed for 4–5 minutes.<br>4. Carefully flip and cook for another 3–4 minutes until tender and flaky."
+        instructions: "1. Season salmon fillets with olive oil, lemon juice, garlic, and fresh dill.<br>2. Preheat grill or cast iron grill pan over medium-high heat.<br>3. Place salmon skin-side down and cook undisturbed for 4-5 minutes.<br>4. Carefully flip and cook for another 3-4 minutes until tender and flaky."
     },
     {
         id: 8,
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="search-result-meta">
                             <span class="search-result-badge">${recipe.category}</span>
                             <span><i class="fa-regular fa-clock"></i> ${recipe.prepTime}</span>
-                            <span>⭐ ${recipe.rating}</span>
+                            <span><i class="fa-solid fa-star" style="color:#ffb800;"></i> ${recipe.rating}</span>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right search-result-arrow"></i>
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-info">
                     <h3 class="card-title">${recipe.title}</h3>
                     <div class="card-rating">
-                        <span class="star-icon">⭐</span>
+                        <span class="star-icon"><i class="fa-solid fa-star" style="color:#ffb800;"></i></span>
                         <span>${recipe.rating}</span>
                         <span class="review-count">(${recipe.reviews})</span>
                     </div>
@@ -436,15 +436,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 18px; font-size: 0.9rem; color: #64748b;">
                     <span style="background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 6px; font-weight: 700;">${recipe.category}</span>
                     <span><i class="fa-regular fa-clock"></i> <strong>Time:</strong> ${recipe.prepTime}</span>
-                    <span>⭐ <strong>Rating:</strong> ${recipe.rating}</span>
+                    <span><i class="fa-solid fa-star" style="color:#ffb800;"></i> <strong>Rating:</strong> ${recipe.rating}</span>
                 </div>
                 
-                <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #257838; font-weight: 700;">🛒 Ingredients:</h4>
+                <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #257838; font-weight: 700;"><i class="fa-solid fa-basket-shopping text-green"></i> Ingredients:</h4>
                 <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.7; color: #334155;">
                     ${recipe.ingredients.map(item => `<li>${item}</li>`).join('')}
                 </ul>
                 
-                <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #ee5d20; font-weight: 700;">👨‍🍳 Instructions:</h4>
+                <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #ee5d20; font-weight: 700;"><i class="fa-solid fa-kitchen-set text-orange"></i> Instructions:</h4>
                 <div style="color: #334155; line-height: 1.7;">${recipe.instructions}</div>
             </div>
         `;

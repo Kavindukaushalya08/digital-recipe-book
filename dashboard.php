@@ -99,7 +99,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 
         <div class="dashboard-header">
             <div class="user-greeting">
-                <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>! ðŸ‘‹</h1>
+                <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>!</h1>
                 <p>Manage your submitted recipes and share new culinary dishes.</p>
             </div>
             <div>
@@ -144,7 +144,7 @@ $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
                     </div>
                     <div class="form-group">
                         <label>Cooking Instructions</label>
-                        <textarea name="instructions" rows="4" required placeholder="Melt butter, sautÃ© garlic, cook shrimp for 4 minutes and garnish."></textarea>
+                        <textarea name="instructions" rows="4" required placeholder="Melt butter, saute garlic, cook shrimp for 4 minutes and garnish."></textarea>
                     </div>
                     <button type="submit" class="btn-green"><i class="fa-solid fa-upload me-2"></i> Publish to Database</button>
                 </form>

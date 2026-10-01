@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
@@ -218,13 +218,13 @@ $jsonRecipes = json_encode($catalogRecipes);
             <aside class="sidebar-categories-box">
                 <div class="sidebar-header">Categories</div>
                 <ul class="sidebar-menu">
-                    <li class="sidebar-item active" data-cat="all"><span>🎨</span> All Categories</li>
-                    <li class="sidebar-item" data-cat="Breakfast"><span>🥐</span> Breakfast</li>
-                    <li class="sidebar-item" data-cat="Lunch"><span>🍱</span> Lunch</li>
-                    <li class="sidebar-item" data-cat="Dinner"><span>🍲</span> Dinner</li>
-                    <li class="sidebar-item" data-cat="Dessert"><span>🍰</span> Dessert</li>
-                    <li class="sidebar-item" data-cat="Drinks"><span>🍹</span> Drinks</li>
-                    <li class="sidebar-item" data-cat="Snacks"><span>🥗</span> Snacks</li>
+                    <li class="sidebar-item active" data-cat="all"><span><i class="fa-solid fa-utensils"></i></span> All Categories</li>
+                    <li class="sidebar-item" data-cat="Breakfast"><span><i class="fa-solid fa-mug-hot"></i></span> Breakfast</li>
+                    <li class="sidebar-item" data-cat="Lunch"><span><i class="fa-solid fa-bowl-food"></i></span> Lunch</li>
+                    <li class="sidebar-item" data-cat="Dinner"><span><i class="fa-solid fa-plate-wheat"></i></span> Dinner</li>
+                    <li class="sidebar-item" data-cat="Dessert"><span><i class="fa-solid fa-cake-candles"></i></span> Dessert</li>
+                    <li class="sidebar-item" data-cat="Drinks"><span><i class="fa-solid fa-martini-glass-citrus"></i></span> Drinks</li>
+                    <li class="sidebar-item" data-cat="Snacks"><span><i class="fa-solid fa-cookie-bite"></i></span> Snacks</li>
                 </ul>
             </aside>
 
@@ -285,7 +285,7 @@ $jsonRecipes = json_encode($catalogRecipes);
                     <div class="card-content-row">
                         <div class="card-recipe-title">${item.title}</div>
                         <div class="card-meta-line">
-                            <span>${item.time} &nbsp;|&nbsp; ⭐ ${item.rating}</span>
+                            <span>${item.time} &nbsp;|&nbsp; <i class="fa-solid fa-star" style="color:#ffb800;"></i> ${item.rating}</span>
                             <i class="fa-regular fa-heart fav-heart-icon" onclick="event.stopPropagation(); toggleHeart(this)"></i>
                         </div>
                     </div>
@@ -323,15 +323,15 @@ $jsonRecipes = json_encode($catalogRecipes);
                     <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 18px; font-size: 0.9rem; color: #64748b;">
                         <span style="background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 6px; font-weight: 700;">${recipe.category}</span>
                         <span><i class="fa-regular fa-clock"></i> <strong>Time:</strong> ${recipe.time}</span>
-                        <span>⭐ <strong>Rating:</strong> ${recipe.rating}</span>
+                        <span><i class="fa-solid fa-star" style="color:#ffb800;"></i> <strong>Rating:</strong> ${recipe.rating}</span>
                     </div>
                     
-                    <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #257838; font-weight: 700;">🛒 Ingredients:</h4>
+                    <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #257838; font-weight: 700;"><i class="fa-solid fa-basket-shopping text-green"></i> Ingredients:</h4>
                     <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.7; color: #334155;">
                         ${ingredientsList.map(item => `<li>${item}</li>`).join('')}
                     </ul>
                     
-                    <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #ee5d20; font-weight: 700;">👨‍🍳 Instructions:</h4>
+                    <h4 style="margin-bottom: 10px; font-size: 1.15rem; color: #ee5d20; font-weight: 700;"><i class="fa-solid fa-kitchen-set text-orange"></i> Instructions:</h4>
                     <div style="color: #334155; line-height: 1.7;">${recipe.instructions}</div>
                 </div>
             `;
